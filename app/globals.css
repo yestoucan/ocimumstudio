@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #0D0F0D;
+  --color-bg-alt: #11140F;
+  --color-accent-deep: #3D7A5F;
+  --color-accent-light: #6BAF8A;
+  --color-cream: #F0EDE8;
+  --font-cormorant: var(--font-cormorant);
+  --font-inter: var(--font-inter);
+  --font-syne: var(--font-syne);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0D0F0D;
+  color: #F0EDE8;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scroll-triggered reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 750ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 750ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated underline — draws left to right */
+.link-line {
+  position: relative;
+}
+.link-line::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #6BAF8A;
+  transition: width 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-line:hover::after,
+.link-line.active::after {
+  width: 100%;
+}
+
+/* Scroll indicator — accent bar travels downward inside container */
+@keyframes travel-down {
+  from { transform: translateY(-20px); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  to { transform: translateY(48px); opacity: 0; }
+}
+.scroll-travel {
+  animation: travel-down 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Viewfinder — SVG path draw-in */
+@keyframes draw-corner {
+  from { stroke-dashoffset: 48; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* Viewfinder — anchor dot appear then pulse */
+@keyframes dot-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.30; }
+}
+
+/* Viewfinder — edge traveler (horizontal): quick sweep, long pause */
+@keyframes travel-h {
+  0%     { transform: translateX(-110%); opacity: 0; }
+  4%     { opacity: 1; }
+  18%    { opacity: 0.85; }
+  22%    { transform: translateX(400%); opacity: 0; }
+  22.01% { transform: translateX(-110%); opacity: 0; }
+  100%   { transform: translateX(-110%); opacity: 0; }
+}
+
+/* Hero title — line by line entrance */
+@keyframes word-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Tech ticker strip */
+@keyframes marquee-ltr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+/* Studio light sheen — diagonal sweep, premium */
+@keyframes hero-sheen {
+  0%     { transform: translateX(-120%) rotate(-18deg); }
+  35%    { transform: translateX(160%) rotate(-18deg); }
+  35.01% { transform: translateX(-120%) rotate(-18deg); }
+  100%   { transform: translateX(-120%) rotate(-18deg); }
+}
+
+/* REC dot blink */
+@keyframes rec-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes viewfinder-focus { from { opacity: 1; transform: none; } to { opacity: 1; transform: none; } }
+  @keyframes word-up          { from { opacity: 1; transform: none; } to { opacity: 1; transform: none; } }
+  @keyframes marquee-ltr      { from { transform: none; } to { transform: none; } }
+  @keyframes rec-pulse        { 0%, 100% { opacity: 1; } }
+}
+
+/* Nav underline for active states */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* prefers-reduced-motion: static fallbacks */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .scroll-travel {
+    animation: none !important;
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
