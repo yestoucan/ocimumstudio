@@ -528,15 +528,60 @@ export default function Home() {
             {/* Canvas — three-point studio lighting */}
             <HeroBackground />
 
-            {/* Basil texture — brand identity, screen blend over dark canvas */}
+            {/* Basil texture — brand identity, screen blend over dark canvas.
+                Gently breathes while waiting for the glint sweep. */}
             <div
-              className="absolute inset-0 pointer-events-none"
+              className="sophia-fx absolute inset-0 pointer-events-none"
               style={{
                 backgroundImage: "url('/Sophia.svg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center top",
                 opacity: 0.40,
                 mixBlendMode: "screen",
+                animation: "sophia-breathe 5s ease-in-out 800ms infinite",
+              }}
+            />
+
+            {/* Glint sweep — a brightened copy of the basil revealed by a
+                moving light band, like light catching the leaves (2 passes). */}
+            <div
+              className="sophia-fx sophia-glint-layer absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: "url('/Sophia.svg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center top",
+                mixBlendMode: "screen",
+                // Strip the basil's native colors and re-tint to a muted
+                // green-grey so the glint matches the video's shade (no white/yellow).
+                filter:
+                  "brightness(1.35) grayscale(1) sepia(1) hue-rotate(82deg) saturate(0.7)",
+                WebkitMaskImage:
+                  "linear-gradient(100deg, transparent 42%, #000 50%, transparent 58%)",
+                maskImage:
+                  "linear-gradient(100deg, transparent 42%, #000 50%, transparent 58%)",
+                WebkitMaskSize: "220% 100%",
+                maskSize: "220% 100%",
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                opacity: 0,
+                animation:
+                  "sophia-glint 1.9s cubic-bezier(0.4,0,0.2,1) 1000ms 2 both",
+              }}
+            />
+
+            {/* Bloom crescendo — one bright flash just before the video swap. */}
+            <div
+              className="sophia-fx sophia-bloom-layer absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: "url('/Sophia.svg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center top",
+                mixBlendMode: "screen",
+                // Same muted green-grey tint as the glint, a touch brighter.
+                filter:
+                  "brightness(1.7) grayscale(1) sepia(1) hue-rotate(82deg) saturate(0.7)",
+                opacity: 0,
+                animation: "sophia-bloom 1.5s ease-out 4300ms both",
               }}
             />
           </div>
