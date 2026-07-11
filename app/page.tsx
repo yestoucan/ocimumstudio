@@ -469,6 +469,14 @@ export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
 
+  /* Hero background swap — after 5s the generative canvas cross-fades to the
+     almost-transparent Sophia video, keeping a green shade on top. */
+  const [videoActive, setVideoActive] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setVideoActive(true), 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const fill = fillRef.current;
@@ -510,18 +518,49 @@ export default function Home() {
           className="relative flex h-[100dvh] flex-col items-center justify-center overflow-hidden"
           aria-label="Accroche principale"
         >
-          {/* Canvas — three-point studio lighting */}
-          <HeroBackground />
-
-          {/* Basil texture — brand identity, screen blend over dark canvas */}
+          {/* Generative background (canvas + basil texture) — cross-fades out
+              when the Sophia video takes over after 5s */}
           <div
-            className="absolute inset-0 pointer-events-none z-[1]"
+            className="absolute inset-0 z-0 transition-opacity duration-[2000ms] ease-in-out"
+            style={{ opacity: videoActive ? 0 : 1 }}
+            aria-hidden="true"
+          >
+            {/* Canvas — three-point studio lighting */}
+            <HeroBackground />
+
+            {/* Basil texture — brand identity, screen blend over dark canvas */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: "url('/Sophia.svg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center top",
+                opacity: 0.40,
+                mixBlendMode: "screen",
+              }}
+            />
+          </div>
+
+          {/* Sophia video — fades in almost-transparent after 5s */}
+          <video
+            className="absolute inset-0 h-full w-full object-cover z-0 pointer-events-none transition-opacity duration-[2000ms] ease-in-out"
+            style={{ opacity: videoActive ? 0.28 : 0 }}
+            src="/homepagesophia_silent.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          />
+
+          {/* Green shade — kept on top of the video for brand tint */}
+          <div
+            className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-[2000ms] ease-in-out"
             style={{
-              backgroundImage: "url('/Sophia.svg')",
-              backgroundSize: "cover",
-              backgroundPosition: "center top",
-              opacity: 0.40,
-              mixBlendMode: "screen",
+              opacity: videoActive ? 1 : 0,
+              background:
+                "linear-gradient(to bottom, rgba(13,15,13,0.55) 0%, rgba(61,122,95,0.30) 45%, rgba(13,15,13,0.78) 100%)",
             }}
             aria-hidden="true"
           />
