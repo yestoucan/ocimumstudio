@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import OcimumMark from "./OcimumMark";
 
 const NAV_ITEMS = [
-  { label: "Productions", href: "#showreel" },
-  { label: "Expertise",   href: "#expertise" },
-  { label: "Clients",     href: "#clients" },
-  { label: "Contact",     href: "#contact" },
+  { label: "Production",       href: "/#process" },
+  { label: "Conseil éditorial", href: "/conseil" },
+  { label: "Marketing & Data", href: "/marketing-data" },
 ];
 
 interface Props {
@@ -49,9 +49,10 @@ export default function MobileNav({ open, onClose }: Props) {
       <div className="flex items-center justify-between px-6 h-[72px]">
         <a
           href="/"
-          className="font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-cream"
+          className="flex items-center gap-2.5 font-syne text-[18px] font-medium tracking-[-0.03em] text-cream"
           onClick={onClose}
         >
+          <OcimumMark size={20} />
           Ocimum Studio
         </a>
         <button
@@ -103,7 +104,7 @@ export default function MobileNav({ open, onClose }: Props) {
           onClick={onClose}
           className="inline-flex items-center gap-3 text-[13px] font-inter uppercase tracking-[0.08em] text-cream border border-accent-light px-6 py-3 hover:bg-accent-light/10 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light"
         >
-          Réserver un appel
+          Contact
         </a>
       </div>
     </div>

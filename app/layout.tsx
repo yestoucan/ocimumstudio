@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter, Syne } from "next/font/google";
 import "./globals.css";
+import ScrollRail from "./ScrollRail";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -24,7 +25,10 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Ocimum Studio — Production portée par l'IA",
+  title: {
+    default: "Ocimum Studio — Votre expertise en image, source de performance",
+    template: "%s | Ocimum Studio",
+  },
   description:
     "Ocimum Studio, une production portée par l'IA, pour mettre en image et en son les meilleurs contenus d'expertise.",
   openGraph: {
@@ -43,6 +47,9 @@ export default function RootLayout({
       className={`${cormorant.variable} ${inter.variable} ${syne.variable} h-full`}
     >
       <body className="min-h-full bg-bg text-cream antialiased">
+        {/* Film grain — constant subtle cinematic texture over the frame */}
+        <div className="grain" aria-hidden="true" />
+        <ScrollRail />
         {children}
       </body>
     </html>

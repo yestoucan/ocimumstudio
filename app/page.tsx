@@ -2,23 +2,9 @@
 import { useEffect, useRef, useState, useCallback, type RefObject, type ReactNode } from "react";
 import NavBar from "./NavBar";
 import HeroBackground from "./HeroBackground";
-
-/* ─── Reveal hook ──────────────────────────────────────────────── */
-function useReveal(threshold = 0.12) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
-      { threshold }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
+import ContactSection from "./ContactSection";
+import Footer from "./Footer";
+import { useReveal, SectionTitle, Eyebrow, LightDivider, Lamp } from "./shared";
 
 
 /* ─── Viewfinder frame — 4-layer SVG animation ──────────────────── */
@@ -208,73 +194,6 @@ function ViewfinderFrame({
   );
 }
 
-/* ─── Light divider between sections ────────────────────────────── */
-function LightDivider() {
-  return (
-    <div className="relative h-px w-full overflow-visible" aria-hidden="true">
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(to right, transparent 0%, rgba(61,122,95,0.75) 25%, rgba(107,175,138,0.90) 50%, rgba(61,122,95,0.75) 75%, transparent 100%)",
-          boxShadow: "0 0 28px 6px rgba(107,175,138,0.40), 0 0 80px 20px rgba(61,122,95,0.22)",
-        }}
-      />
-    </div>
-  );
-}
-
-/* ─── Section title with SVG viewfinder corners ─────────────────── */
-function SectionTitle({
-  children,
-  visible,
-  fontSize = "clamp(28px, 3.5vw, 42px)",
-  className = "",
-}: {
-  children: ReactNode;
-  visible: boolean;
-  fontSize?: string;
-  className?: string;
-}) {
-  const S = 16;
-  const L = S * 2;
-  const STROKE = "rgba(107,175,138,0.50)";
-  const DOT = "#6BAF8A";
-  return (
-    <div
-      className={`inline-block relative px-5 py-2 ${className}`}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "none" : "translateY(12px)",
-        transition: "opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1)",
-      }}
-    >
-      {/* TL */}
-      <svg width={S} height={S} viewBox={`0 0 ${S} ${S}`} className="absolute top-0 left-0 pointer-events-none" style={{ overflow: "visible" }} aria-hidden="true">
-        <path d={`M ${S} 0 L 0 0 L 0 ${S}`} fill="none" stroke={STROKE} strokeWidth={1} strokeLinecap="square" strokeDasharray={L} strokeDashoffset={visible ? 0 : L} style={{ transition: visible ? "stroke-dashoffset 450ms cubic-bezier(0.4,0,0.2,1) 80ms" : "none" }} />
-        <circle cx={0} cy={0} r={1.5} fill={DOT} style={{ opacity: visible ? 1 : 0, transition: visible ? "opacity 200ms ease-out 580ms" : "none", animation: visible ? "dot-pulse 3s ease-in-out 780ms infinite" : "none" }} />
-      </svg>
-      {/* TR */}
-      <svg width={S} height={S} viewBox={`0 0 ${S} ${S}`} className="absolute top-0 right-0 pointer-events-none" style={{ overflow: "visible" }} aria-hidden="true">
-        <path d={`M 0 0 L ${S} 0 L ${S} ${S}`} fill="none" stroke={STROKE} strokeWidth={1} strokeLinecap="square" strokeDasharray={L} strokeDashoffset={visible ? 0 : L} style={{ transition: visible ? "stroke-dashoffset 450ms cubic-bezier(0.4,0,0.2,1) 200ms" : "none" }} />
-        <circle cx={S} cy={0} r={1.5} fill={DOT} style={{ opacity: visible ? 1 : 0, transition: visible ? "opacity 200ms ease-out 700ms" : "none", animation: visible ? "dot-pulse 3s ease-in-out 900ms infinite" : "none" }} />
-      </svg>
-      {/* BR */}
-      <svg width={S} height={S} viewBox={`0 0 ${S} ${S}`} className="absolute bottom-0 right-0 pointer-events-none" style={{ overflow: "visible" }} aria-hidden="true">
-        <path d={`M 0 ${S} L ${S} ${S} L ${S} 0`} fill="none" stroke={STROKE} strokeWidth={1} strokeLinecap="square" strokeDasharray={L} strokeDashoffset={visible ? 0 : L} style={{ transition: visible ? "stroke-dashoffset 450ms cubic-bezier(0.4,0,0.2,1) 320ms" : "none" }} />
-        <circle cx={S} cy={S} r={1.5} fill={DOT} style={{ opacity: visible ? 1 : 0, transition: visible ? "opacity 200ms ease-out 820ms" : "none", animation: visible ? "dot-pulse 3s ease-in-out 1020ms infinite" : "none" }} />
-      </svg>
-      {/* BL */}
-      <svg width={S} height={S} viewBox={`0 0 ${S} ${S}`} className="absolute bottom-0 left-0 pointer-events-none" style={{ overflow: "visible" }} aria-hidden="true">
-        <path d={`M ${S} ${S} L 0 ${S} L 0 0`} fill="none" stroke={STROKE} strokeWidth={1} strokeLinecap="square" strokeDasharray={L} strokeDashoffset={visible ? 0 : L} style={{ transition: visible ? "stroke-dashoffset 450ms cubic-bezier(0.4,0,0.2,1) 440ms" : "none" }} />
-        <circle cx={0} cy={S} r={1.5} fill={DOT} style={{ opacity: visible ? 1 : 0, transition: visible ? "opacity 200ms ease-out 940ms" : "none", animation: visible ? "dot-pulse 3s ease-in-out 1140ms infinite" : "none" }} />
-      </svg>
-      <h2 className="font-syne font-medium text-cream leading-tight tracking-[-0.03em]" style={{ fontSize }}>
-        {children}
-      </h2>
-    </div>
-  );
-}
-
 /* ─── Showreel section ──────────────────────────────────────────── */
 function ShowreelSection() {
   const { ref, visible } = useReveal(0.08);
@@ -306,19 +225,21 @@ function ShowreelSection() {
   return (
     <section
       id="showreel"
-      className="py-20 md:py-28 px-[8%]"
+      className="relative overflow-hidden py-20 md:py-28 px-[8%]"
       aria-label="Showreel"
       style={{ backgroundColor: "#0D0F0D" }}
     >
+      <Lamp position="bl" />
       <div
         ref={ref}
-        className="max-w-4xl mx-auto"
+        className="relative max-w-4xl mx-auto"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? "none" : "translateY(20px)",
           transition: "opacity 800ms cubic-bezier(0.16,1,0.3,1), transform 800ms cubic-bezier(0.16,1,0.3,1)",
         }}
       >
+        <Eyebrow visible={visible}>Showreel</Eyebrow>
         <SectionTitle visible={visible} fontSize="clamp(28px, 3.5vw, 42px)" className="mb-10 md:mb-14">
           Ocimum Studio, notre propre reportage.
         </SectionTitle>
@@ -423,6 +344,7 @@ function ProcessSteps() {
   const { ref, visible } = useReveal();
   return (
     <div ref={ref} className="max-w-4xl mx-auto">
+      <Eyebrow visible={visible}>Méthode</Eyebrow>
       <SectionTitle visible={visible} className="mb-16 md:mb-20">
         Votre visibilité en 4 étapes
       </SectionTitle>
@@ -701,7 +623,6 @@ export default function Home() {
             className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-[10]"
             aria-hidden="true"
           >
-            <span className="font-inter text-[10px] uppercase tracking-[0.12em] text-cream/30">Scroll</span>
             <div
               className="relative overflow-hidden"
               style={{ width: "1px", height: "48px", backgroundColor: "rgba(240,237,232,0.12)" }}
@@ -722,7 +643,7 @@ export default function Home() {
 
         {/* ══ 2 — Processus ════════════════════════════════════════ */}
         <section
-          id="expertise"
+          id="process"
           className="py-32 md:py-40 px-[8%]"
           aria-label="Notre processus"
           style={{
@@ -753,48 +674,109 @@ export default function Home() {
 
         <LightDivider />
 
-        {/* ══ 5 — Contact ════════════════════════════════════════ */}
+        {/* ══ 5 — Au-delà de la vidéo : le conseil ═══════════════ */}
+        <ExpertiseCta />
+
+        <LightDivider />
+
+        {/* ══ 6 — Contact ════════════════════════════════════════ */}
         <ContactSection />
 
       </main>
 
       {/* ══ Footer ═══════════════════════════════════════════════ */}
-      <footer
-        id="footer"
-        className="py-16 px-[8%]"
+      <Footer />
+    </>
+  );
+}
+
+/* ─── Expertise CTA — dual bridge: Conseil + Extra Services ─────── */
+const BRIDGES = [
+  {
+    num: "01",
+    label: "Conseil éditorial",
+    title: "Stratégie digitale & IA.",
+    desc: "La même exigence, appliquée en amont de la caméra — positionnement, prise de parole, IA au service de vos contenus.",
+    href: "/conseil",
+    cta: "Découvrir le conseil",
+  },
+  {
+    num: "02",
+    label: "Marketing & Data",
+    title: "Un set de services by Ocimum Studio.",
+    desc: "Go-to-market, acquisition web, CRM, LinkedIn, mesure, création de site — pour atteindre vos objectifs.",
+    href: "/marketing-data",
+    cta: "Voir les offres",
+  },
+];
+
+function ExpertiseCta() {
+  const { ref, visible } = useReveal();
+  return (
+    <section
+      id="expertise-cta"
+      className="py-16 md:py-20 px-[8%]"
+      aria-label="Au-delà de la vidéo"
+      style={{ backgroundColor: "#0D0F0D" }}
+    >
+      <div
+        ref={ref}
+        className="max-w-5xl mx-auto flex flex-col items-center"
         style={{
-          backgroundColor: "#0A0C0A",
-          borderTop: "1px solid rgba(61,122,95,0.12)",
-          boxShadow: "0 -1px 0 rgba(107,175,138,0.04), 0 -8px 32px rgba(61,122,95,0.04)",
+          opacity: visible ? 1 : 0,
+          transform: visible ? "none" : "translateY(16px)",
+          transition: "opacity 750ms cubic-bezier(0.16,1,0.3,1), transform 750ms cubic-bezier(0.16,1,0.3,1)",
         }}
       >
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
-          <span className="font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-cream/80">
-            Ocimum Studio
-          </span>
-          <nav className="flex flex-wrap items-center gap-6 md:gap-8" aria-label="Liens utiles">
-            {[
-              { label: "Mentions légales", href: "/legal" },
-              { label: "Contact",          href: "#contact" },
-              { label: "LinkedIn",         href: "https://linkedin.com", target: "_blank" },
-            ].map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                target={l.target}
-                rel={l.target ? "noopener noreferrer" : undefined}
-                className="link-line font-inter text-[12px] uppercase tracking-[0.07em] text-cream/40 hover:text-cream/80 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-          <p className="font-inter text-[11px] leading-relaxed text-cream/25 max-w-xs">
-            Ce studio fait appel à des outils d&apos;IA pour certaines étapes de production, conformément au règlement UE sur l&apos;IA (AI Act).
-          </p>
+        <div className="text-center">
+          <Eyebrow visible={visible}>Au-delà de la vidéo</Eyebrow>
+          <SectionTitle visible={visible} fontSize="clamp(24px, 2.8vw, 34px)" className="mb-10 md:mb-12">
+            Ocimum Studio, c&apos;est aussi l&apos;accompagnement.
+          </SectionTitle>
         </div>
-      </footer>
-    </>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+          {BRIDGES.map((b, i) => (
+            <a
+              key={b.href}
+              href={b.href}
+              className="group relative flex flex-col p-8 md:p-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light"
+              style={{
+                border: "1px solid rgba(240,237,232,0.12)",
+                backgroundColor: "#11140F",
+                opacity: visible ? 1 : 0,
+                transform: visible ? "none" : "translateY(16px)",
+                transition: `opacity 700ms cubic-bezier(0.16,1,0.3,1) ${200 + i * 130}ms, transform 700ms cubic-bezier(0.16,1,0.3,1) ${200 + i * 130}ms, border-color 300ms ease, box-shadow 300ms ease`,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(107,175,138,0.55)";
+                e.currentTarget.style.boxShadow = "0 0 30px rgba(107,175,138,0.14)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(240,237,232,0.12)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <span className="font-inter text-[11px] font-medium uppercase tracking-[0.12em] text-accent-light mb-4">
+                {b.num} — {b.label}
+              </span>
+              <h3 className="font-syne font-medium text-cream tracking-[-0.02em] text-[22px] mb-3">
+                {b.title}
+              </h3>
+              <p className="font-inter font-light text-[15px] leading-[1.72] mb-8 flex-1" style={{ color: "rgba(240,237,232,0.50)" }}>
+                {b.desc}
+              </p>
+              <span className="inline-flex items-center gap-2 font-inter text-[12px] uppercase tracking-[0.08em] text-accent-light">
+                {b.cta}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -839,7 +821,7 @@ function ClientLogos() {
       >
         Ils nous font confiance
       </p>
-      <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+      <div className={`clients-scan ${visible ? "is-in" : ""} flex flex-wrap items-center justify-center gap-10 md:gap-16`}>
         {CLIENTS.map((client, i) => (
           <div
             key={client.name}
@@ -871,150 +853,4 @@ function ClientLogos() {
   );
 }
 
-/* ─── Contact section ───────────────────────────────────────────── */
-function ContactSection() {
-  const { ref, visible } = useReveal();
-  const [formState, setFormState] = useState({ name: "", company: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
-
-  const inputBase = "bg-transparent pt-3 pb-2 font-inter text-[15px] font-light text-cream outline-none resize-none w-full";
-  const inputBorder = { borderBottom: "1px solid rgba(61,122,95,0.35)", transition: "border-color 300ms ease, box-shadow 300ms ease" };
-  const onFocusIn  = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.currentTarget.style.borderBottomColor = "#6BAF8A";
-    e.currentTarget.style.boxShadow = "0 6px 20px -6px rgba(107,175,138,0.22)";
-  };
-  const onFocusOut = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.currentTarget.style.borderBottomColor = "rgba(61,122,95,0.35)";
-    e.currentTarget.style.boxShadow = "none";
-  };
-
-  return (
-    <section
-      id="contact"
-      className="py-32 md:py-48 px-[8%]"
-      aria-label="Contact"
-      style={{
-        background: "radial-gradient(ellipse 55% 60% at 15% 30%, rgba(61,122,95,0.24) 0%, transparent 60%), #11140F",
-      }}
-    >
-      <div
-        ref={ref}
-        className="max-w-2xl mx-auto"
-        style={{
-          opacity: visible ? 1 : 0,
-          transform: visible ? "none" : "translateY(14px)",
-          transition: "opacity 750ms cubic-bezier(0.16,1,0.3,1), transform 750ms cubic-bezier(0.16,1,0.3,1)",
-        }}
-      >
-        <SectionTitle visible={visible} fontSize="clamp(32px, 4vw, 48px)" className="mb-5">
-          Parlons de votre projet.
-        </SectionTitle>
-        <p className="font-inter font-light text-[15px] leading-[1.75] mb-14" style={{ color: "rgba(240,237,232,0.45)" }}>
-          Tournage, série de contenus ou stratégie vidéo — décrivez votre besoin, nous vous répondons sous 24h.
-        </p>
-
-        {sent ? (
-          <div className="py-12 flex flex-col items-start gap-3">
-            <span className="font-inter text-[11px] uppercase tracking-[0.12em] text-accent-light">Demande reçue</span>
-            <p className="font-syne font-medium text-cream text-[22px] tracking-[-0.02em]">
-              Merci, nous revenons vers vous sous 24h.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="flex flex-col gap-0" noValidate>
-
-            {/* Row 1 — Nom + Société */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
-              <label className="flex flex-col gap-1 pb-8">
-                <span className="font-inter text-[10px] uppercase tracking-[0.12em] text-accent-light/70">Nom *</span>
-                <input
-                  type="text" autoComplete="name" required
-                  value={formState.name}
-                  onChange={(e) => setFormState((s) => ({ ...s, name: e.target.value }))}
-                  className={inputBase}
-                  style={{ ...inputBorder, color: "rgba(240,237,232,0.90)" }}
-                  onFocus={onFocusIn} onBlur={onFocusOut}
-                  placeholder="Jean Dupont"
-                />
-              </label>
-              <label className="flex flex-col gap-1 pb-8">
-                <span className="font-inter text-[10px] uppercase tracking-[0.12em] text-accent-light/70">Société *</span>
-                <input
-                  type="text" autoComplete="organization" required
-                  value={formState.company}
-                  onChange={(e) => setFormState((s) => ({ ...s, company: e.target.value }))}
-                  className={inputBase}
-                  style={{ ...inputBorder, color: "rgba(240,237,232,0.90)" }}
-                  onFocus={onFocusIn} onBlur={onFocusOut}
-                  placeholder="Votre société"
-                />
-              </label>
-            </div>
-
-            {/* Row 2 — Email */}
-            <label className="flex flex-col gap-1 pb-8">
-              <span className="font-inter text-[10px] uppercase tracking-[0.12em] text-accent-light/70">Email professionnel *</span>
-              <input
-                type="email" autoComplete="email" required
-                value={formState.email}
-                onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
-                className={inputBase}
-                style={{ ...inputBorder, color: "rgba(240,237,232,0.90)" }}
-                onFocus={onFocusIn} onBlur={onFocusOut}
-                placeholder="jean@societe.com"
-              />
-            </label>
-
-            {/* Row 3 — Message */}
-            <label className="flex flex-col gap-1 pb-10">
-              <span className="font-inter text-[10px] uppercase tracking-[0.12em] text-accent-light/70">Votre projet *</span>
-              <textarea
-                rows={5} autoComplete="off" required
-                value={formState.message}
-                onChange={(e) => setFormState((s) => ({ ...s, message: e.target.value }))}
-                className={inputBase}
-                style={{ ...inputBorder, color: "rgba(240,237,232,0.90)" }}
-                onFocus={onFocusIn} onBlur={onFocusOut}
-                placeholder="Quel type de contenu souhaitez-vous produire ? Pour quelle audience ? Dans quels délais ?"
-              />
-            </label>
-
-            {/* Submit row */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-2">
-              <button
-                type="submit"
-                className="group inline-flex items-center gap-3 font-inter text-[13px] uppercase tracking-[0.08em] text-cream border border-accent-light/60 px-8 py-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light"
-                style={{
-                  transition: "background-color 300ms, border-color 300ms, box-shadow 300ms",
-                  boxShadow: "0 0 24px rgba(107,175,138,0.10)",
-                }}
-                onMouseEnter={e => {
-                  const el = e.currentTarget as HTMLButtonElement;
-                  el.style.backgroundColor = "rgba(107,175,138,0.10)";
-                  el.style.borderColor = "#6BAF8A";
-                  el.style.boxShadow = "0 0 40px rgba(107,175,138,0.22)";
-                }}
-                onMouseLeave={e => {
-                  const el = e.currentTarget as HTMLButtonElement;
-                  el.style.backgroundColor = "transparent";
-                  el.style.borderColor = "rgba(107,175,138,0.60)";
-                  el.style.boxShadow = "0 0 24px rgba(107,175,138,0.10)";
-                }}
-              >
-                Envoyer la demande
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style={{ transition: "transform 300ms cubic-bezier(0.16,1,0.3,1)" }}>
-                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-              <p className="font-inter text-[11px] leading-[1.6]" style={{ color: "rgba(240,237,232,0.22)" }}>
-                Réponse sous 24h.<br />Vos données ne sont pas transmises à des tiers.
-              </p>
-            </div>
-
-          </form>
-        )}
-      </div>
-    </section>
-  );
-}
 

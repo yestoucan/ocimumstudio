@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import MobileNav from "./MobileNav";
+import OcimumMark from "./OcimumMark";
 
 const NAV_ITEMS = [
-  { label: "Productions", href: "#showreel" },
-  { label: "Expertise",   href: "#expertise" },
-  { label: "Clients",     href: "#clients" },
-  { label: "Contact",     href: "#contact" },
+  { label: "Production",       href: "/#process" },
+  { label: "Conseil éditorial", href: "/conseil" },
+  { label: "Marketing & Data", href: "/marketing-data" },
 ];
 
 export default function NavBar() {
@@ -32,11 +32,12 @@ export default function NavBar() {
         }}
       >
         <div className="w-full flex items-center justify-between px-[8%]">
-          {/* Logo */}
+          {/* Logo — mark + wordmark */}
           <a
             href="/"
-            className="font-inter text-[13px] font-medium uppercase tracking-[0.12em] text-cream hover:text-accent-light transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light"
+            className="flex items-center gap-2.5 font-syne text-[18px] font-medium tracking-[-0.03em] text-cream hover:text-accent-light transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light"
           >
+            <OcimumMark size={20} />
             Ocimum Studio
           </a>
 
@@ -55,7 +56,7 @@ export default function NavBar() {
               href="#contact"
               className="font-inter text-[13px] font-normal uppercase tracking-[0.07em] text-cream border border-accent-light/60 px-5 py-2.5 hover:bg-accent-light/10 hover:border-accent-light transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light"
             >
-              Réserver un appel
+              Contact
             </a>
           </nav>
 
