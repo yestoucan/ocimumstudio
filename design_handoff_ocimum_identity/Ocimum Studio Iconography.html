@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Ocimum Studio — Iconographie &amp; variantes du logo</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600&family=Inter:wght@300;400;500&display=swap');
+
+  :root{
+    --bg:#0D0F0D;
+    --bg-alt:#11140F;
+    --cream:#F0EDE8;
+    --green:#6BAF8A;
+    --green-deep:#3D7A5F;
+    --hairline: rgba(240,237,232,0.14);
+
+    --bright-bg:#F3F0E8;
+    --bright-ink:#14160F;
+    --bright-hairline: rgba(20,22,15,0.16);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    max-width:1600px;
+    width:100%;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+  }
+  section{
+    padding:clamp(60px, 9vw, 140px) clamp(24px, 7vw, 120px);
+    position:relative;
+  }
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--green);
+    margin:0 0 22px 0;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  h1, h2{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.03em;
+    line-height:1.05;
+    margin:0 0 20px 0;
+  }
+  h1{ font-size:clamp(32px, 5vw, 56px); }
+  h2{ font-size:clamp(28px, 3.6vw, 42px); margin-bottom:64px; }
+  p{
+    font-weight:300;
+    font-size:17px;
+    line-height:1.7;
+    color:rgba(240,237,232,0.6);
+    max-width:640px;
+  }
+
+  /* ===== cover ===== */
+  #cover{ padding-bottom:40px; }
+  #cover .kicker{
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.4);
+    margin-bottom:24px;
+  }
+
+  /* ===== icon grid ===== */
+  .icon-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));
+    gap:1px;
+    background:var(--hairline);
+    border:1px solid var(--hairline);
+  }
+  .icon-cell{
+    background:var(--bg);
+    padding:40px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+  }
+  .icon-cell svg{ display:block; }
+  .icon-cell .icon-name{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.4);
+    text-align:center;
+  }
+
+  .icon-note{ margin-top:48px; }
+
+  /* ===== logo variants ===== */
+  #variants .cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--hairline);
+    border:1px solid var(--hairline);
+  }
+  .variant-panel{
+    padding:72px 56px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:56px;
+    min-height:520px;
+  }
+  .variant-panel.dark{ background:var(--bg); }
+  .variant-panel.bright{ background:var(--bright-bg); }
+
+  .variant-tag{
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+  .variant-panel.dark .variant-tag{ color:var(--green); }
+  .variant-panel.bright .variant-tag{ color:var(--green-deep); }
+
+  .lockup{
+    display:flex;
+    align-items:center;
+    gap:24px;
+  }
+  .lockup .word{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.03em;
+    font-size:38px;
+  }
+  .variant-panel.dark .lockup .word{ color:var(--cream); }
+  .variant-panel.bright .lockup .word{ color:var(--bright-ink); }
+
+  .variant-marks{
+    display:flex;
+    align-items:center;
+    gap:56px;
+  }
+  .variant-usage{
+    font-size:13px;
+    line-height:1.7;
+    max-width:360px;
+  }
+  .variant-panel.dark .variant-usage{ color:rgba(240,237,232,0.45); }
+  .variant-panel.bright .variant-usage{ color:rgba(20,22,15,0.55); }
+
+  @media (max-width:820px){
+    #variants .cols{ grid-template-columns:1fr; }
+  }
+
+  footer{
+    padding:clamp(48px, 7vw, 80px) clamp(24px, 7vw, 120px) clamp(56px, 8vw, 100px);
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid var(--hairline);
+  }
+  footer .word{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.03em;
+    font-size:18px;
+  }
+  footer .meta{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.3);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section id="cover">
+  <div class="kicker">Ocimum Studio — Référence de marque</div>
+  <h1>Iconographie &amp; variantes du logo.</h1>
+  <p>Un jeu d'icônes au trait, dessinées avec la même exigence que la marque — et les deux fonds sur lesquels le logo doit tenir.</p>
+</section>
+
+<!-- ============ ICONOGRAPHY ============ -->
+<section id="icons" class="section-alt" style="background:var(--bg-alt);">
+  <p class="eyebrow"><span></span>01 — Iconographie</p>
+  <h2>Le trait fin, jamais le remplissage.</h2>
+  <div class="icon-grid" id="icon-grid"></div>
+  <p class="icon-note">Trait de 1.5px, angles nets ou arrondis selon la courbe — jamais de remplissage plein. Le vert n'apparaît que sur les icônes de statut ou d'accent (lecture, enregistrement), jamais en usage neutre.</p>
+</section>
+
+<!-- ============ LOGO VARIANTS ============ -->
+<section id="variants">
+  <p class="eyebrow"><span></span>02 — Variantes du logo</p>
+  <h2>Sombre par défaut. Claire quand le fond l'exige.</h2>
+
+  <div class="cols">
+    <div class="variant-panel dark">
+      <div class="variant-tag">Dark — usage par défaut</div>
+      <div class="lockup">
+        <div class="mark" id="mark-dark"></div>
+        <div class="word">Ocimum Studio</div>
+      </div>
+      <div class="variant-marks">
+        <div class="mark" id="mark-dark-sm"></div>
+      </div>
+      <p class="variant-usage">Fond #0D0F0D, trait crème #F0EDE8, accent basilic #6BAF8A. La version par défaut : écran, vidéo, présentation, toute surface sombre de la marque.</p>
+    </div>
+
+    <div class="variant-panel bright">
+      <div class="variant-tag">Bright — sur fond clair</div>
+      <div class="lockup">
+        <div class="mark" id="mark-bright"></div>
+        <div class="word">Ocimum Studio</div>
+      </div>
+      <div class="variant-marks">
+        <div class="mark" id="mark-bright-sm"></div>
+      </div>
+      <p class="variant-usage">Fond #F3F0E8, trait encre #14160F, accent basilic foncé #3D7A5F pour garder le contraste. Réservée au papier, aux partenariats co-brandés et aux fonds clairs imposés.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="word">OCIMUM STUDIO</div>
+  <div class="meta">Iconographie &amp; variantes — v1</div>
+</footer>
+
+<script>
+// ---------------- mark (viewfinder aperture) ----------------
+function markSVG(size, strokeW, inkColor, accentColor){
+  const s = size, sw = strokeW, vb = 200;
+  return `
+  <svg width="${s}" height="${s}" viewBox="0 0 ${vb} ${vb}" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="${inkColor}" stroke-width="${sw}" stroke-linecap="square">
+      <path d="M 14 46 L 14 14 L 46 14"/>
+      <path d="M 154 14 L 186 14 L 186 46"/>
+      <path d="M 186 154 L 186 186 L 154 186"/>
+      <path d="M 46 186 L 14 186 L 14 154"/>
+    </g>
+    <g stroke="${inkColor}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 46 100 C 74 63 126 63 154 100"/>
+      <path d="M 46 100 C 74 137 126 137 154 100"/>
+    </g>
+    <path stroke="${accentColor}" d="M 50 100 C 84 97 116 103 150 100" stroke-width="${sw}" stroke-linecap="round"/>
+  </svg>`;
+}
+document.getElementById('mark-dark').innerHTML     = markSVG(56, 6, '#F0EDE8', '#6BAF8A');
+document.getElementById('mark-dark-sm').innerHTML  = markSVG(30, 7, '#F0EDE8', '#6BAF8A');
+document.getElementById('mark-bright').innerHTML   = markSVG(56, 6, '#14160F', '#3D7A5F');
+document.getElementById('mark-bright-sm').innerHTML= markSVG(30, 7, '#14160F', '#3D7A5F');
+
+// eyebrow icon (small mark) before section labels
+document.querySelectorAll('.eyebrow span').forEach(el => {
+  el.innerHTML = markSVG(18, 9, '#F0EDE8', '#6BAF8A');
+  el.style.display = 'inline-flex';
+});
+
+// ---------------- icon set ----------------
+const ICON_STROKE = '#F0EDE8';
+const ICONS = [
+  { name:'Lecture', svg:`<path d="M6 4 L19 12 L6 20 Z" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linejoin="round" fill="none"/>` },
+  { name:'Pause', svg:`<path d="M8 5 L8 19 M16 5 L16 19" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linecap="round"/>` },
+  { name:'Enregistrer', svg:`<circle cx="12" cy="12" r="7" stroke="${ICON_STROKE}" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" stroke="#6BAF8A" stroke-width="1.5"/>` },
+  { name:'Caméra', svg:`<path d="M4 8 h11 v9 h-11 z M15 10.5 L20 8 v8 l-5 -2.5 Z" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linejoin="round" fill="none"/>` },
+  { name:'Données', svg:`<path d="M5 19 V11 M12 19 V5 M19 19 V14" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linecap="round"/>` },
+  { name:'Intelligence artificielle', svg:`<path d="M12 3 L13.6 9.2 L20 12 L13.6 14.8 L12 21 L10.4 14.8 L4 12 L10.4 9.2 Z" stroke="${ICON_STROKE}" stroke-width="1.4" stroke-linejoin="round" fill="none"/>` },
+  { name:'Document', svg:`<path d="M7 3 h7 l4 4 v14 h-11 Z M14 3 v4 h4" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linejoin="round" fill="none"/>` },
+  { name:'Message', svg:`<path d="M4 5 h16 v11 h-9 l-4 3.5 V16 H4 Z" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linejoin="round" fill="none"/>` },
+  { name:'Email', svg:`<path d="M4 6 h16 v12 h-16 Z M4 6 l8 7 l8 -7" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linejoin="round" fill="none"/>` },
+  { name:'Téléphone', svg:`<path d="M6 3 c-2 0 -3 1 -3 3 c0 8 8 16 16 16 c2 0 3 -1 3 -3 v-3 l-5 -2 l-2 2 c-2.5 -1.2 -4.5 -3.2 -5.7 -5.7 l2 -2 l-2 -5 Z" stroke="${ICON_STROKE}" stroke-width="1.4" stroke-linejoin="round" fill="none"/>` },
+  { name:'Calendrier', svg:`<path d="M4 6 h16 v14 h-16 Z M4 10 h16 M8 3 v5 M16 3 v5" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` },
+  { name:'Flèche', svg:`<path d="M4 12 h15 M13 6 l6 6 l-6 6" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` },
+  { name:'Chevron', svg:`<path d="M6 9 l6 6 l6 -6" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` },
+  { name:'Fermer', svg:`<path d="M6 6 L18 18 M18 6 L6 18" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linecap="round"/>` },
+  { name:'Menu', svg:`<path d="M4 7 h16 M4 12 h16 M4 17 h16" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linecap="round"/>` },
+  { name:'Lien externe', svg:`<path d="M9 5 H5 v14 h14 v-4 M13 3 h8 v8 M20.5 3.5 L11 13" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` },
+  { name:'Télécharger', svg:`<path d="M12 3 v12 M7 11 l5 5 l5 -5 M4 20 h16" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` },
+  { name:'Validé', svg:`<path d="M4 12 l5.5 6 L20 6" stroke="${ICON_STROKE}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` },
+];
+
+const grid = document.getElementById('icon-grid');
+ICONS.forEach(icon => {
+  const cell = document.createElement('div');
+  cell.className = 'icon-cell';
+  cell.innerHTML = `<svg width="30" height="30" viewBox="0 0 24 24" fill="none">${icon.svg}</svg><span class="icon-name">${icon.name}</span>`;
+  grid.appendChild(cell);
+});
+</script>
+
+</body>
+</html>

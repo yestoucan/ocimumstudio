@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Ocimum Studio — Export Sheet (ffmpeg assets)</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600&family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@300&display=swap');
+  :root{
+    --bg:#0D0F0D; --bg-alt:#11140F; --bg-deep:#0A0C0A;
+    --cream:#F0EDE8; --green:#6BAF8A; --green-deep:#3D7A5F;
+    --hairline: rgba(240,237,232,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; max-width:1400px; width:100%; background:var(--bg); color:var(--cream); font-family:'Inter',sans-serif; font-weight:300; }
+  section{ padding:64px clamp(24px,6vw,100px); }
+  h1{ font-family:'Syne',sans-serif; font-weight:500; letter-spacing:-0.03em; font-size:clamp(28px,4vw,44px); margin:0 0 16px 0; }
+  h2{ font-family:'Syne',sans-serif; font-weight:500; letter-spacing:-0.03em; font-size:24px; margin:0 0 32px 0; }
+  p{ font-size:15px; line-height:1.7; color:rgba(240,237,232,0.6); max-width:680px; }
+  .eyebrow{ font-family:'Inter',sans-serif; font-weight:500; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin-bottom:20px; }
+
+  /* color table */
+  .swatch-row{ display:flex; align-items:center; gap:20px; padding:16px 0; border-top:1px solid var(--hairline); }
+  .swatch-row:last-child{ border-bottom:1px solid var(--hairline); }
+  .swatch{ width:44px; height:44px; flex-shrink:0; border:1px solid var(--hairline); }
+  .swatch-name{ font-family:'Syne',sans-serif; font-size:15px; min-width:170px; }
+  .swatch-hex{ font-variant-numeric:tabular-nums; font-size:13px; color:rgba(240,237,232,0.45); min-width:90px; }
+  .swatch-use{ font-size:13px; color:rgba(240,237,232,0.45); }
+
+  /* type table */
+  .type-row{ display:grid; grid-template-columns:220px 1fr; gap:24px; padding:20px 0; border-top:1px solid var(--hairline); align-items:baseline; }
+  .type-row:last-child{ border-bottom:1px solid var(--hairline); }
+  .type-role{ font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(240,237,232,0.4); }
+
+  /* icon grid */
+  .icon-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(120px,1fr)); gap:1px; background:var(--hairline); border:1px solid var(--hairline); }
+  .icon-cell{ background:var(--bg); padding:28px 12px; display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .icon-cell img{ width:32px; height:32px; display:block; }
+  .icon-cell .fname{ font-size:10px; letter-spacing:0.04em; color:rgba(240,237,232,0.4); text-align:center; word-break:break-all; }
+
+  /* mark grid */
+  .mark-grid{ display:flex; gap:48px; flex-wrap:wrap; align-items:flex-end; }
+  .mark-cell{ display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .mark-cell img{ display:block; }
+  .mark-cell .fname{ font-size:11px; letter-spacing:0.06em; color:rgba(240,237,232,0.4); }
+
+  code{ font-family:ui-monospace, 'SF Mono', Menlo, monospace; font-size:13px; background:var(--bg-deep); padding:2px 6px; border:1px solid var(--hairline); color:var(--green); }
+  pre{ font-family:ui-monospace, 'SF Mono', Menlo, monospace; font-size:13px; background:var(--bg-deep); border:1px solid var(--hairline); padding:20px; overflow-x:auto; color:rgba(240,237,232,0.75); line-height:1.6; }
+
+  footer{ padding:48px clamp(24px,6vw,100px) 72px; border-top:1px solid var(--hairline); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(240,237,232,0.3); }
+</style>
+</head>
+<body>
+
+<section>
+  <p class="eyebrow">Ocimum Studio — Référence d'export</p>
+  <h1>Assets pour infographies &amp; iconographie en vidéo.</h1>
+  <p>PNG transparents, valeurs hex exactes et polices — prêts à intégrer dans vos filtres ffmpeg (<code>drawtext</code>, <code>overlay</code>). Tous les fichiers sont dans <code>export-assets/</code>.</p>
+</section>
+
+<section>
+  <h2>Couleurs</h2>
+  <div class="swatch-row"><div class="swatch" style="background:#0D0F0D;"></div><div class="swatch-name">Fond</div><div class="swatch-hex">#0D0F0D</div><div class="swatch-use">Fond principal — quasi-noir, sous-ton vert.</div></div>
+  <div class="swatch-row"><div class="swatch" style="background:#11140F;"></div><div class="swatch-name">Fond alt.</div><div class="swatch-hex">#11140F</div><div class="swatch-use">Surfaces surélevées, bandeaux.</div></div>
+  <div class="swatch-row"><div class="swatch" style="background:#0A0C0A;"></div><div class="swatch-name">Fond profond</div><div class="swatch-hex">#0A0C0A</div><div class="swatch-use">Bandeaux, ticker — le plus sombre.</div></div>
+  <div class="swatch-row"><div class="swatch" style="background:#F0EDE8;"></div><div class="swatch-name">Texte</div><div class="swatch-hex">#F0EDE8</div><div class="swatch-use">Crème chaud — jamais blanc pur. Titres 100%, corps ~55%, méta ~30%.</div></div>
+  <div class="swatch-row"><div class="swatch" style="background:#6BAF8A;"></div><div class="swatch-name">Accent basilic</div><div class="swatch-hex">#6BAF8A</div><div class="swatch-use">Trait ou repère seul — jamais un aplat.</div></div>
+  <div class="swatch-row"><div class="swatch" style="background:#3D7A5F;"></div><div class="swatch-name">Accent profond</div><div class="swatch-hex">#3D7A5F</div><div class="swatch-use">Halo, profondeur, accent sur fond clair.</div></div>
+  <div class="swatch-row"><div class="swatch" style="background:#14160F;"></div><div class="swatch-name">Encre (fond clair)</div><div class="swatch-hex">#14160F</div><div class="swatch-use">Trait sur fond clair (#F3F0E8), variante Bright.</div></div>
+</section>
+
+<section>
+  <h2>Typographie</h2>
+  <div class="type-row"><div class="type-role">Syne 500</div><div style="font-family:'Syne',sans-serif; font-weight:500; letter-spacing:-0.03em; font-size:32px;">Titres — tracking serré, -0.03em</div></div>
+  <div class="type-row"><div class="type-role">Inter 300</div><div style="font-family:'Inter',sans-serif; font-weight:300; font-size:17px;">Corps de texte — 15–19px, interligne 1.65–1.75</div></div>
+  <div class="type-row"><div class="type-role">Inter 500 uppercase</div><div style="font-family:'Inter',sans-serif; font-weight:500; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--green);">Micro-labels — légendes, repères</div></div>
+  <div class="type-row"><div class="type-role">Cormorant Garamond 300</div><div style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:32px;">Accent rare — grands moments seulement</div></div>
+</section>
+
+<section>
+  <h2>Mark — tailles d'export</h2>
+  <div class="mark-grid">
+    <div class="mark-cell"><img src="export-assets/mark/mark-dark-128.png" width="64" height="64"><span class="fname">mark-dark-128.png</span></div>
+    <div class="mark-cell"><img src="export-assets/mark/mark-dark-256.png" width="96" height="96"><span class="fname">mark-dark-256.png</span></div>
+    <div class="mark-cell"><img src="export-assets/mark/mark-dark-512.png" width="140" height="140"><span class="fname">mark-dark-512.png</span></div>
+    <div class="mark-cell"><img src="export-assets/mark/mark-bright-256.png" width="96" height="96" style="background:#F3F0E8;"><span class="fname">mark-bright-256.png</span></div>
+  </div>
+  <p style="margin-top:28px;">Fond transparent, trait épaissi (~3.5% de la taille) pour tenir à la compression H.264. Dark = trait crème / accent basilic. Bright = trait encre / accent basilic foncé, pour incruster sur un fond clair.</p>
+</section>
+
+<section>
+  <h2>Iconographie (18 icônes, 256px, fond transparent)</h2>
+  <div class="icon-grid" id="icon-grid"></div>
+</section>
+
+<section>
+  <h2>Exemples ffmpeg</h2>
+  <pre>ffmpeg -i input.mp4 -i export-assets/mark/mark-dark-256.png \
+  -filter_complex "[0:v][1:v] overlay=W-w-48:48" \
+  -c:a copy out.mp4
+
+ffmpeg -i input.mp4 \
+  -vf "drawtext=fontfile=Inter-Medium.ttf:text='OCIMUM STUDIO':\
+fontcolor=0xF0EDE8:fontsize=28:x=48:y=H-80" \
+  -c:a copy out.mp4</pre>
+  <p>Pour le tracking serré des titres Syne, ffmpeg n'a pas de paramètre letter-spacing natif — pré-espacer la chaîne ou utiliser un sous-titre ASS/libass si le rendu doit rester fidèle.</p>
+</section>
+
+<footer>Ocimum Studio — Export sheet v1</footer>
+
+<script>
+const ICON_NAMES = ['lecture','pause','enregistrer','camera','donnees','ia','document','message','email','telephone','calendrier','fleche','chevron','fermer','menu','lien-externe','telecharger','valide'];
+const grid = document.getElementById('icon-grid');
+ICON_NAMES.forEach(name => {
+  const cell = document.createElement('div');
+  cell.className = 'icon-cell';
+  cell.innerHTML = `<img src="export-assets/icons/${name}.png"><span class="fname">${name}.png</span>`;
+  grid.appendChild(cell);
+});
+</script>
+
+</body>
+</html>

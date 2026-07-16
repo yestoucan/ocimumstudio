@@ -1,0 +1,70 @@
+/* ============================================================
+   Ocimum Studio — Expertise page (Strategy + Data & AI consulting)
+   Extends ocimum-styles.css — load after it.
+   ============================================================ */
+
+.expertise-hero{
+  padding-top:180px;
+  padding-bottom:100px;
+}
+.expertise-hero .wrap{ max-width:900px; }
+.expertise-title{
+  font-family:var(--font-head);
+  font-weight:500;
+  letter-spacing:-0.03em;
+  line-height:1.08;
+  font-size:clamp(36px, 5.5vw, 72px);
+  color:var(--cream);
+  margin:0 0 32px 0;
+}
+.expertise-sub{
+  font-size:clamp(16px, 1.6vw, 19px);
+  line-height:1.75;
+  color:var(--ink-body);
+  max-width:640px;
+}
+
+.expertise-block{ }
+.expertise-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:start;
+}
+.expertise-grid.reverse{ direction:rtl; }
+.expertise-grid.reverse > *{ direction:ltr; }
+.expertise-grid .section-title{ margin-bottom:24px; }
+.expertise-grid > .expertise-col:first-child p{ max-width:440px; }
+
+.detail-row{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:20px;
+  padding:26px 0;
+  border-top:1px solid rgba(240,237,232,0.12);
+}
+.detail-row:last-child{ border-bottom:1px solid rgba(240,237,232,0.12); }
+.detail-num{
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:13px;
+  color:var(--green);
+  letter-spacing:0.05em;
+}
+.detail-name{
+  font-family:var(--font-head);
+  font-weight:500;
+  letter-spacing:-0.02em;
+  font-size:19px;
+  color:var(--cream);
+  margin-bottom:8px;
+}
+.detail-body p{ font-size:15px; max-width:420px; }
+
+@media (max-width:860px){
+  .expertise-grid, .expertise-grid.reverse{
+    grid-template-columns:1fr;
+    direction:ltr;
+    gap:48px;
+  }
+}

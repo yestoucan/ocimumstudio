@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="design_doc_mode" content="canvas">
+<title>Ocimum Studio — Carte de visite</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600&family=Inter:wght@300;400;500&display=swap');
+
+  :root{
+    --bg:#0D0F0D;
+    --cream:#F0EDE8;
+    --green:#6BAF8A;
+    --green-deep:#3D7A5F;
+    --hairline: rgba(240,237,232,0.16);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:'Inter',sans-serif; }
+
+  .card{
+    width:1004px;
+    height:650px;
+    background:var(--bg);
+    color:var(--cream);
+    position:absolute;
+    overflow:hidden;
+  }
+  .label{
+    position:absolute;
+    top:-34px; left:0;
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.4);
+  }
+
+  /* viewfinder corners */
+  .vf-corner{ position:absolute; width:44px; height:44px; }
+  .vf-corner svg{ display:block; }
+  .vf-corner path{ stroke:var(--green); stroke-width:1.4; fill:none; }
+  .vf-tl{ top:0; left:0; }
+  .vf-tr{ top:0; right:0; }
+  .vf-br{ bottom:0; right:0; }
+  .vf-bl{ bottom:0; left:0; }
+  .vf-tr svg{ transform:scaleX(-1); }
+  .vf-br svg{ transform:scale(-1,-1); }
+  .vf-bl svg{ transform:scaleY(-1); }
+
+  .mark svg{ display:block; }
+
+  /* ---------- front ---------- */
+  .front{
+    padding:64px 68px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .front .mark{ width:96px; height:96px; }
+  .front .logo-lockup{
+    display:flex;
+    align-items:center;
+    gap:20px;
+  }
+  .front .logo-lockup svg{ width:52px; height:52px; flex-shrink:0; display:block; }
+  .front .logo-lockup .lockup-word{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.02em;
+    font-size:32px;
+  }
+  .front .person{ }
+  .front .name{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.03em;
+    font-size:56px;
+    line-height:1.05;
+  }
+  .front .title{
+    margin-top:16px;
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:16px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--green);
+  }
+  .front .entity{
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.3);
+  }
+
+  /* ---------- back ---------- */
+  .back{
+    padding:64px 68px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .back .mark{ width:64px; height:64px; }
+  .back .logo-lockup{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .back .logo-lockup svg{ width:40px; height:40px; flex-shrink:0; display:block; }
+  .back .logo-lockup .lockup-word{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.02em;
+    font-size:24px;
+  }
+  .back .contact-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .back .contact-row{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    align-items:baseline;
+    padding:18px 0;
+    border-top:1px solid var(--hairline);
+  }
+  .back .contact-row:last-child{ border-bottom:1px solid var(--hairline); }
+  .back .contact-row .cap{
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--green);
+  }
+  .back .contact-row .val{
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    font-size:20px;
+    color:var(--cream);
+  }
+  .back .sasu{
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.24);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ FRONT ============ -->
+<div class="card front viewfinder" style="left:80px; top:100px;">
+  <div class="label">Recto</div>
+  <div class="vf-corner vf-tl"><svg viewBox="0 0 20 20"><path d="M2 18 L2 2 L18 2"/></svg></div>
+  <div class="vf-corner vf-tr"><svg viewBox="0 0 20 20"><path d="M2 18 L2 2 L18 2"/></svg></div>
+  <div class="vf-corner vf-br"><svg viewBox="0 0 20 20"><path d="M2 18 L2 2 L18 2"/></svg></div>
+  <div class="vf-corner vf-bl"><svg viewBox="0 0 20 20"><path d="M2 18 L2 2 L18 2"/></svg></div>
+
+  <div class="logo-lockup">
+    <svg viewBox="0 0 200 200" fill="none">
+      <g stroke="#F0EDE8" stroke-width="7" stroke-linecap="square">
+        <path d="M 14 46 L 14 14 L 46 14"/>
+        <path d="M 154 14 L 186 14 L 186 46"/>
+        <path d="M 186 154 L 186 186 L 154 186"/>
+        <path d="M 46 186 L 14 186 L 14 154"/>
+      </g>
+      <g stroke="#F0EDE8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 46 100 C 74 63 126 63 154 100"/>
+        <path d="M 46 100 C 74 137 126 137 154 100"/>
+      </g>
+      <path stroke="#6BAF8A" d="M 50 100 C 84 97 116 103 150 100" stroke-width="7" stroke-linecap="round"/>
+    </svg>
+    <span class="lockup-word">Ocimum Studio</span>
+  </div>
+
+  <div class="person">
+    <div class="name">Joakim<br>Feudeer</div>
+    <div class="title">Président</div>
+  </div>
+
+  <div class="entity">SASU</div>
+</div>
+
+<!-- ============ BACK ============ -->
+<div class="card back viewfinder" style="left:1180px; top:100px;">
+  <div class="label">Verso</div>
+  <div class="vf-corner vf-tl"><svg viewBox="0 0 20 20"><path d="M2 18 L2 2 L18 2"/></svg></div>
+  <div class="vf-corner vf-tr"><svg viewBox="0 0 20 20"><path d="M2 18 L2 2 L18 2"/></svg></div>
+  <div class="vf-corner vf-br"><svg viewBox="0 0 20 20"><path d="M2 18 L2 2 L18 2"/></svg></div>
+  <div class="vf-corner vf-bl"><svg viewBox="0 0 20 20"><path d="M2 18 L2 2 L18 2"/></svg></div>
+
+  <div class="logo-lockup">
+    <svg viewBox="0 0 200 200" fill="none">
+      <g stroke="#F0EDE8" stroke-width="7" stroke-linecap="square">
+        <path d="M 14 46 L 14 14 L 46 14"/>
+        <path d="M 154 14 L 186 14 L 186 46"/>
+        <path d="M 186 154 L 186 186 L 154 186"/>
+        <path d="M 46 186 L 14 186 L 14 154"/>
+      </g>
+      <g stroke="#F0EDE8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 46 100 C 74 63 126 63 154 100"/>
+        <path d="M 46 100 C 74 137 126 137 154 100"/>
+      </g>
+      <path stroke="#6BAF8A" d="M 50 100 C 84 97 116 103 150 100" stroke-width="7" stroke-linecap="round"/>
+    </svg>
+    <span class="lockup-word">Ocimum Studio</span>
+  </div>
+
+  <div class="contact-list">
+    <div class="contact-row"><span class="cap">Email</span><span class="val">joakim@ocimumstudio.com</span></div>
+    <div class="contact-row"><span class="cap">Téléphone</span><span class="val">+33 1 00 00 00 00</span></div>
+    <div class="contact-row"><span class="cap">Site</span><span class="val">ocimumstudio.com</span></div>
+    <div class="contact-row"><span class="cap">Adresse</span><span class="val">Saint Jean-de-Luz, France</span></div>
+  </div>
+
+  <div class="sasu">Stratégie — Data &amp; IA — Production</div>
+</div>
+
+<!-- thumbnail for bundler / offline preview -->
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#0D0F0D"/>
+    <path d="M35 30 C22 42 22 58 35 70" stroke="#F0EDE8" stroke-width="2" fill="none"/>
+    <path d="M65 30 C78 42 78 58 65 70" stroke="#F0EDE8" stroke-width="2" fill="none"/>
+    <path d="M50 32 L50 68" stroke="#6BAF8A" stroke-width="2"/>
+  </svg>
+</template>
+</body>
+</html>

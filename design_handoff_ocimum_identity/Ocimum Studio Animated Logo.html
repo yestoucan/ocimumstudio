@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Ocimum Studio — Logo animé</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@500&display=swap');
+  html, body{ margin:0; background:#0D0F0D; height:100%; overflow:hidden; }
+  #root{ width:100%; height:100%; }
+</style>
+</head>
+<body>
+
+<script>window.OM_SCENES = '[{"name":"Logo","dur":4.2}]';</script>
+<script>window.OM_PLAYBACK = '{"mode":"times","count":1}';</script>
+<script>window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "motionEditor": true,
+  "variant": "Grand format"
+}/*EDITMODE-END*/;</script>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="animations-v2.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="ocimum-logo-scene.jsx"></script>
+
+<script type="text/babel">
+function App(){
+  const { SceneStage } = window;
+  const [t, setTweak] = window.useTweaks(window.TWEAK_DEFAULTS);
+
+  const LogoWithVariant = React.useCallback(
+    (props) => <window.OcimumLogoScene {...props} variant={t.variant} />,
+    [t.variant]
+  );
+
+  return (
+    <div style={{ width:'100%', height:'100%', position:'relative' }}>
+      <SceneStage width={1920} height={1080} scenes={window.OM_SCENES}
+                  playback={window.OM_PLAYBACK} bg="#0D0F0D">
+        {{ 'Logo': LogoWithVariant }}
+      </SceneStage>
+
+      <window.TweaksPanel>
+        <window.TweakSection label="Ocimum — Logo" />
+        <window.TweakRadio label="Variante" value={t.variant}
+                           options={['Standard', 'Sans texte', 'Grand format']}
+                           onChange={(v) => setTweak('variant', v)} />
+        <window.TweakToggle label="Motion editor" value={t.motionEditor}
+                             onChange={(v) => setTweak('motionEditor', v)} />
+      </window.TweaksPanel>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+
+</body>
+</html>

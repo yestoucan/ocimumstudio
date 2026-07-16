@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="design_doc_mode" content="canvas">
+<title>Ocimum Studio — Logo Lockup</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600&family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@300&display=swap');
+
+  :root{
+    --bg:#0D0F0D;
+    --bg-alt:#11140F;
+    --cream:#F0EDE8;
+    --green:#6BAF8A;
+    --green-deep:#3D7A5F;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',sans-serif;}
+
+  .frame{
+    background:var(--bg);
+    color:var(--cream);
+    position:absolute;
+  }
+  .label{
+    position:absolute;
+    top:-30px;
+    left:0;
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.45);
+  }
+
+  /* ---- mark ---- */
+  .mark svg{display:block;}
+
+  /* ---- wordmark ---- */
+  .wordmark{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.03em;
+    color:var(--cream);
+    white-space:nowrap;
+    line-height:1.05;
+  }
+  .wordmark .studio{
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    letter-spacing:0.08em;
+    color:rgba(240,237,232,0.45);
+    text-transform:uppercase;
+  }
+
+  .divider{
+    background:rgba(240,237,232,0.18);
+  }
+
+  /* ---- bright variant: needs a visible edge since it sits close in
+         value to the host canvas backdrop ---- */
+  .frame.bright{
+    background:#F3F0E8;
+    color:#14160F;
+    border:1px solid rgba(20,22,15,0.3);
+    box-shadow:0 0 0 1px rgba(20,22,15,0.08);
+  }
+  .frame.bright .wordmark{ color:#14160F; }
+  .frame.bright .wordmark .studio{ color:rgba(20,22,15,0.5); }
+  .frame.bright .divider{ background:rgba(20,22,15,0.2); }
+  .frame.bright .label{ color:rgba(20,22,15,0.45); }
+  .frame.bright .caption{ color:rgba(20,22,15,0.45) !important; }
+</style>
+</head>
+<body>
+
+<!-- ============ ROW 1 — DARK ============ -->
+<div class="frame" style="left:80px; top:100px; width:420px; height:420px; display:flex; align-items:center; justify-content:center;">
+  <div class="label">Standalone mark — Dark</div>
+  <div class="mark" data-size="240" data-ink="dark"></div>
+</div>
+
+<div class="frame" style="left:580px; top:100px; width:420px; height:420px;">
+  <div class="label">Small use / favicon scale — Dark</div>
+  <div style="display:flex; align-items:center; justify-content:center; gap:56px; height:100%;">
+    <div class="mark" data-size="64" data-ink="dark"></div>
+    <div class="mark" data-size="40" data-ink="dark"></div>
+    <div class="mark" data-size="24" data-ink="dark"></div>
+  </div>
+</div>
+
+<div class="frame" style="left:1680px; top:100px; width:340px; height:420px; background:var(--bg-alt); border:1px solid rgba(240,237,232,0.12);">
+  <div class="label">On raised surface (#11140F)</div>
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:22px;">
+    <div class="mark" data-size="72" data-ink="dark"></div>
+    <div class="wordmark" style="font-size:22px; text-align:center;">OCIMUM<br><span class="studio" style="font-size:11px; letter-spacing:0.12em;">STUDIO</span></div>
+  </div>
+</div>
+
+<!-- ============ ROW 1B — BRIGHT TWINS ============ -->
+<div class="frame bright" style="left:80px; top:580px; width:420px; height:420px; display:flex; align-items:center; justify-content:center;">
+  <div class="label">Standalone mark — Bright</div>
+  <div class="mark" data-size="240" data-ink="bright"></div>
+</div>
+
+<div class="frame bright" style="left:580px; top:580px; width:420px; height:420px;">
+  <div class="label">Small use / favicon scale — Bright</div>
+  <div style="display:flex; align-items:center; justify-content:center; gap:56px; height:100%;">
+    <div class="mark" data-size="64" data-ink="bright"></div>
+    <div class="mark" data-size="40" data-ink="bright"></div>
+    <div class="mark" data-size="24" data-ink="bright"></div>
+  </div>
+</div>
+
+<!-- ============ ROW 2 — DARK ============ -->
+<div class="frame" style="left:80px; top:1060px; width:920px; height:280px;">
+  <div class="label">Primary lockup — horizontal — Dark</div>
+  <div style="display:flex; align-items:center; justify-content:center; height:100%; gap:32px;">
+    <div class="mark" data-size="88" data-ink="dark"></div>
+    <div class="divider" style="width:1px; height:64px;"></div>
+    <div class="wordmark" style="font-size:40px;">OCIMUM <span class="studio" style="font-size:16px; letter-spacing:0.1em;">STUDIO</span></div>
+  </div>
+</div>
+
+<div class="frame" style="left:1080px; top:1060px; width:520px; height:280px;">
+  <div class="label">Stacked variant — Dark</div>
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:22px;">
+    <div class="mark" data-size="76" data-ink="dark"></div>
+    <div class="wordmark" style="font-size:28px; text-align:center;">OCIMUM<br><span class="studio" style="font-size:13px; letter-spacing:0.12em;">STUDIO</span></div>
+  </div>
+</div>
+
+<!-- ============ ROW 2B — BRIGHT TWINS ============ -->
+<div class="frame bright" style="left:80px; top:1400px; width:920px; height:280px;">
+  <div class="label">Primary lockup — horizontal — Bright</div>
+  <div style="display:flex; align-items:center; justify-content:center; height:100%; gap:32px;">
+    <div class="mark" data-size="88" data-ink="bright"></div>
+    <div class="divider" style="width:1px; height:64px;"></div>
+    <div class="wordmark" style="font-size:40px;">OCIMUM <span class="studio" style="font-size:16px; letter-spacing:0.1em;">STUDIO</span></div>
+  </div>
+</div>
+
+<div class="frame bright" style="left:1080px; top:1400px; width:520px; height:280px;">
+  <div class="label">Stacked variant — Bright</div>
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:22px;">
+    <div class="mark" data-size="76" data-ink="bright"></div>
+    <div class="wordmark" style="font-size:28px; text-align:center;">OCIMUM<br><span class="studio" style="font-size:13px; letter-spacing:0.12em;">STUDIO</span></div>
+  </div>
+</div>
+
+<!-- ============ ROW 3 — ORIENTATION STUDY (Dark only) ============ -->
+<div class="frame" style="left:80px; top:1740px; width:1120px; height:340px;">
+  <div class="label">Orientation study — leaf vs. lens/eye reading</div>
+  <div style="display:flex; align-items:center; justify-content:center; height:100%; gap:120px;">
+    <div style="display:flex; flex-direction:column; align-items:center; gap:18px;">
+      <div class="mark" data-size="160" data-ink="dark"></div>
+      <div class="caption" style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(240,237,232,0.45); text-align:center;">Horizontal — reads as lens / eye<br>primary orientation</div>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:18px;">
+      <div class="mark" data-size="160" data-ink="dark" style="transform:rotate(90deg);"></div>
+      <div class="caption" style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(240,237,232,0.45); text-align:center;">Vertical — reads as leaf<br>alternate, botanical reading</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Build the mark: viewfinder corner brackets framing an abstracted
+// basil-leaf / aperture-blade form, drawn entirely in hairline strokes.
+// The single green accent is the leaf's midrib — a line, never a fill.
+function markSVG(size, strokeW, inkColor, accentColor){
+  const s = size;
+  const sw = strokeW;
+  const vb = 200;
+  const ink = inkColor || '#F0EDE8';
+  const accent = accentColor || '#6BAF8A';
+  return `
+  <svg width="${s}" height="${s}" viewBox="0 0 ${vb} ${vb}" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- viewfinder corner brackets -->
+    <g stroke="${ink}" stroke-width="${sw}" stroke-linecap="square">
+      <path d="M 14 46 L 14 14 L 46 14"/>
+      <path d="M 154 14 L 186 14 L 186 46"/>
+      <path d="M 186 154 L 186 186 L 154 186"/>
+      <path d="M 46 186 L 14 186 L 14 154"/>
+    </g>
+    <!-- abstracted basil leaf / aperture blades — horizontal, lens/eye reading -->
+    <g stroke="${ink}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 46 100 C 74 63 126 63 154 100"/>
+      <path d="M 46 100 C 74 137 126 137 154 100"/>
+    </g>
+    <!-- midrib: sole accent -->
+    <path stroke="${accent}" d="M 50 100 C 84 97 116 103 150 100" stroke-width="${sw}" stroke-linecap="round"/>
+  </svg>`;
+}
+
+document.querySelectorAll('.mark[data-size]').forEach(el => {
+  const size = parseInt(el.dataset.size, 10);
+  const sw = size < 32 ? 2.2 : size < 56 ? 1.8 : size < 100 ? 1.5 : 1.6;
+  if(el.dataset.ink === 'bright'){
+    el.innerHTML = markSVG(size, sw, '#14160F', '#3D7A5F');
+  } else {
+    el.innerHTML = markSVG(size, sw, '#F0EDE8', '#6BAF8A');
+  }
+});
+</script>
+
+<!-- thumbnail for bundler / offline preview -->
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#0D0F0D"/>
+    <path d="M35 30 C22 42 22 58 35 70" stroke="#F0EDE8" stroke-width="2" fill="none"/>
+    <path d="M65 30 C78 42 78 58 65 70" stroke="#F0EDE8" stroke-width="2" fill="none"/>
+    <path d="M50 32 L50 68" stroke="#6BAF8A" stroke-width="2"/>
+  </svg>
+</template>
+</body>
+</html>

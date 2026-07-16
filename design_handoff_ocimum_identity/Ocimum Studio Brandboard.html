@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ocimum Studio — Brandboard</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600&family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@300&display=swap');
+
+  :root{
+    --bg:#0D0F0D;
+    --bg-alt:#11140F;
+    --cream:#F0EDE8;
+    --green:#6BAF8A;
+    --green-deep:#3D7A5F;
+    --hairline: rgba(240,237,232,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    max-width:1600px;
+    width:100%;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+  }
+  section{
+    padding:clamp(60px, 9vw, 140px) clamp(24px, 7vw, 120px);
+    position:relative;
+  }
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.45);
+    margin:0 0 22px 0;
+  }
+  h2{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.03em;
+    line-height:1.05;
+    font-size:clamp(28px, 3.6vw, 44px);
+    margin:0 0 64px 0;
+  }
+  p{
+    font-weight:300;
+    font-size:17px;
+    line-height:1.7;
+    color:rgba(240,237,232,0.7);
+    max-width:640px;
+  }
+
+  /* corner bracket motif, reused as a framing device on this board */
+  .bracket{
+    position:absolute;
+    width:28px;
+    height:28px;
+  }
+  .bracket svg{display:block;}
+  .bracket.tl{top:36px;left:36px;}
+  .bracket.tr{top:36px;right:36px;transform:rotate(90deg);}
+  .bracket.bl{bottom:36px;left:36px;transform:rotate(-90deg);}
+  .bracket.br{bottom:36px;right:36px;transform:rotate(180deg);}
+
+  /* ===== cover ===== */
+  #cover{
+    height:820px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:36px;
+    padding:0;
+  }
+  #cover .mark{width:120px;height:120px;}
+  #cover .word{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.03em;
+    font-size:clamp(28px, 6vw, 56px);
+    line-height:1;
+    padding:0 24px;
+  }
+  #cover .sub{
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.45);
+  }
+  #cover .tagline{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-size:30px;
+    color:rgba(240,237,232,0.85);
+    margin-top:20px;
+  }
+  #cover .board-label{
+    position:absolute;
+    bottom:56px;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.28);
+  }
+
+  /* ===== logo section ===== */
+  #logo .row{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:64px;
+    margin-bottom:96px;
+  }
+  #logo .cell{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:22px;
+  }
+  #logo .cell .cap{
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.3);
+  }
+  #logo .lockup-h{
+    display:flex;
+    align-items:center;
+    gap:26px;
+  }
+  #logo .lockup-h .mark{width:64px;height:64px;}
+  #logo .div{width:1px;height:52px;background:var(--hairline);}
+  #logo .word{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.03em;
+    font-size:30px;
+  }
+  #logo .word .studio{
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    letter-spacing:0.08em;
+    color:rgba(240,237,232,0.45);
+    font-size:13px;
+  }
+  #logo .clearspace-demo{
+    position:relative;
+    width:220px;
+    height:220px;
+    border:1px solid var(--hairline);
+  }
+  #logo .clearspace-demo .mark{
+    position:absolute;
+    width:72px;
+    height:72px;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+  }
+
+  /* ===== color section ===== */
+  #color .swatches{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    gap:1px;
+    background:var(--hairline);
+    border:1px solid var(--hairline);
+  }
+  .swatch{
+    background:var(--bg);
+    padding:180px 24px 24px 24px;
+    position:relative;
+  }
+  .swatch .fill{
+    position:absolute;
+    top:24px;left:24px;right:24px;
+    height:150px;
+  }
+  .swatch .name{
+    font-family:'Syne',sans-serif;
+    font-size:16px;
+    font-weight:500;
+    letter-spacing:-0.02em;
+    margin-bottom:6px;
+  }
+  .swatch .hex{
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:rgba(240,237,232,0.45);
+    font-variant-numeric:tabular-nums;
+    margin-bottom:10px;
+  }
+  .swatch .use{
+    font-size:12px;
+    line-height:1.6;
+    color:rgba(240,237,232,0.4);
+  }
+
+  /* ===== type section ===== */
+  #type .specimen{
+    border-top:1px solid var(--hairline);
+    padding:48px 0;
+    display:grid;
+    grid-template-columns:minmax(160px, 220px) 1fr;
+    gap:24px 48px;
+    align-items:baseline;
+  }
+  #type .specimen:last-child{border-bottom:1px solid var(--hairline);}
+  #type .role{
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.4);
+  }
+  #type .role .meta{
+    display:block;
+    margin-top:8px;
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:none;
+    color:rgba(240,237,232,0.28);
+  }
+  #type .sample-headline{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.03em;
+    line-height:1.05;
+    font-size:clamp(28px, 4.5vw, 52px);
+  }
+  #type .sample-body{
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    font-size:18px;
+    line-height:1.75;
+    color:rgba(240,237,232,0.7);
+    max-width:560px;
+  }
+  #type .sample-micro{
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.45);
+  }
+  #type .sample-serif{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-size:clamp(24px, 3.6vw, 44px);
+    color:var(--cream);
+  }
+
+  /* ===== hierarchy via opacity ===== */
+  #hierarchy .stack{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  #hierarchy .line{
+    font-family:'Inter',sans-serif;
+    font-size:17px;
+  }
+  #hierarchy .l1{color:rgba(240,237,232,1); font-weight:400;}
+  #hierarchy .l2{color:rgba(240,237,232,0.45); font-weight:300;}
+  #hierarchy .l3{color:rgba(240,237,232,0.3); font-weight:300;}
+  #hierarchy .l4{color:rgba(240,237,232,0.24); font-weight:300; font-size:12px; letter-spacing:0.1em; text-transform:uppercase;}
+  #hierarchy .tag{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.3);
+    margin-left:16px;
+  }
+
+  /* ===== motif section ===== */
+  #motif .demo{
+    display:flex;
+    flex-wrap:wrap;
+    gap:56px;
+    align-items:center;
+  }
+  #motif .frame-demo{
+    position:relative;
+    width:min(420px, 100%);
+    height:280px;
+    border:none;
+  }
+  #motif .frame-demo .bracket{width:32px;height:32px;}
+  #motif .frame-demo .cap{
+    position:absolute;
+    bottom:24px;left:24px;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.3);
+  }
+  #motif ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  #motif li{
+    font-size:15px;
+    line-height:1.7;
+    color:rgba(240,237,232,0.6);
+    padding-left:20px;
+    position:relative;
+  }
+  #motif li::before{
+    content:'';
+    position:absolute;
+    left:0; top:9px;
+    width:8px; height:1px;
+    background:var(--green);
+  }
+
+  /* ===== motion section ===== */
+  #motion .rules{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:40px;
+  }
+  #motion .rule .cap{
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--green);
+    margin-bottom:14px;
+  }
+  #motion .rule p{
+    font-size:14px;
+    line-height:1.7;
+    color:rgba(240,237,232,0.55);
+    max-width:none;
+  }
+  #motion .curve-demo{
+    margin-top:56px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+  #motion .curve-demo .track{
+    position:relative;
+    flex:1;
+    max-width:420px;
+    height:1px;
+    background:var(--hairline);
+  }
+  #motion .curve-demo .dot{
+    position:absolute;
+    top:50%; left:0;
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--green);
+    transform:translate(-50%,-50%);
+    animation:motion-demo 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+  @keyframes motion-demo{
+    0%{ left:0%; opacity:0.4; }
+    60%{ left:100%; opacity:1; }
+    100%{ left:100%; opacity:1; }
+  }
+  #motion .curve-demo .label{
+    font-size:11px;
+    letter-spacing:0.06em;
+    color:rgba(240,237,232,0.35);
+    font-variant-numeric:tabular-nums;
+    white-space:nowrap;
+  }
+
+  /* ===== components section ===== */
+  #components .row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:72px;
+    align-items:flex-start;
+    margin-bottom:72px;
+  }
+  #components .row:last-child{ margin-bottom:0; }
+  #components .col-cap{
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.3);
+    margin-bottom:22px;
+  }
+
+  .demo-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 26px;
+    border:1px solid rgba(107,175,138,0.65);
+    background:transparent;
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+  .demo-btn.hover-state{
+    background:rgba(107,175,138,0.10);
+    box-shadow:0 0 26px rgba(107,175,138,0.22);
+    border-color:var(--green);
+  }
+  .demo-btn-group{ display:flex; gap:20px; flex-wrap:wrap; }
+
+  .demo-field{ width:240px; }
+  .demo-field label{
+    display:block;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--green);
+    margin-bottom:10px;
+  }
+  .demo-field .input-line{
+    border-bottom:1px solid rgba(240,237,232,0.22);
+    padding:8px 2px;
+    font-size:15px;
+    color:rgba(240,237,232,0.28);
+  }
+  .demo-field.focus-state .input-line{
+    border-bottom-color:var(--green);
+    box-shadow:0 1px 0 0 var(--green);
+    color:var(--cream);
+  }
+
+  .demo-ticker{
+    border-top:1px solid var(--hairline);
+    border-bottom:1px solid var(--hairline);
+    padding:16px 0;
+    overflow:hidden;
+    width:100%;
+  }
+  .demo-ticker .track{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 0;
+  }
+  .demo-ticker .item{
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.3);
+    white-space:nowrap;
+    padding:0 18px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .demo-ticker .item::after{
+    content:'';
+    width:4px; height:4px;
+    border-radius:50%;
+    background:var(--green);
+  }
+
+  .demo-serif-nav{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .demo-serif-nav a{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-size:32px;
+    color:var(--cream);
+  }
+
+  /* ===== voice section ===== */
+  #voice .principles{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:1px;
+    background:var(--hairline);
+    border-top:1px solid var(--hairline);
+    border-bottom:1px solid var(--hairline);
+  }
+  #voice .principle{
+    background:var(--bg);
+    padding:40px 40px 40px 0;
+  }
+  #voice .principle:not(:first-child){padding-left:40px;}
+  #voice .principle .num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:32px;
+    color:var(--green);
+    display:block;
+    margin-bottom:18px;
+  }
+  #voice .principle h3{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.02em;
+    font-size:20px;
+    margin:0 0 12px 0;
+  }
+  #voice .principle p{
+    font-size:14px;
+    line-height:1.7;
+    color:rgba(240,237,232,0.5);
+    max-width:none;
+  }
+
+  /* ===== do / don't ===== */
+  #usage .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:48px;
+  }
+  #usage .col .cap{
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:28px;
+  }
+  #usage .col.do .cap{color:var(--green);}
+  #usage .col.dont .cap{color:rgba(240,237,232,0.35);}
+  #usage .col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  #usage .col li{
+    font-size:14px;
+    line-height:1.7;
+    color:rgba(240,237,232,0.55);
+    padding-left:18px;
+    position:relative;
+  }
+  #usage .col.do li::before{content:'';position:absolute;left:0;top:9px;width:7px;height:1px;background:var(--green);}
+  #usage .col.dont li::before{content:'';position:absolute;left:0;top:9px;width:7px;height:1px;background:rgba(240,237,232,0.3);}
+
+  footer{
+    padding:clamp(48px, 7vw, 80px) clamp(24px, 7vw, 120px) clamp(56px, 8vw, 100px);
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid var(--hairline);
+  }
+  footer .word{
+    font-family:'Syne',sans-serif;
+    font-weight:500;
+    letter-spacing:-0.03em;
+    font-size:18px;
+  }
+  footer .meta{
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(240,237,232,0.3);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section id="cover">
+  <div class="mark" id="mark-cover"></div>
+  <div class="word">OCIMUM STUDIO</div>
+  <div class="sub">Brand identity — reference board</div>
+  <div class="tagline">Stratégie, données, image.</div>
+  <div class="board-label">Ocimum Studio &mdash; SASU &mdash; Paris</div>
+</section>
+
+<!-- ============ LOGO ============ -->
+<section id="logo">
+  <div class="bracket tl">${'{{BR}}'}</div>
+  <div class="bracket tr">${'{{BR}}'}</div>
+  <p class="eyebrow">01 — Mark &amp; lockup</p>
+  <h2>A viewfinder abstracted<br>from a basil leaf.</h2>
+
+  <div class="row">
+    <div class="cell">
+      <div class="mark" id="mark-standalone" style="width:100px;height:100px;"></div>
+      <div class="cap">Standalone mark</div>
+    </div>
+    <div class="cell">
+      <div class="lockup-h">
+        <div class="mark" id="mark-h1"></div>
+        <div class="div"></div>
+        <div class="word">OCIMUM <span class="studio">STUDIO</span></div>
+      </div>
+      <div class="cap">Primary horizontal lockup</div>
+    </div>
+    <div class="cell">
+      <div class="clearspace-demo">
+        <div class="mark" id="mark-clear"></div>
+      </div>
+      <div class="cap">Minimum clear space</div>
+    </div>
+  </div>
+
+  <p>Two arcs meet at a point, drawn from the same hairline stroke as the corner marks — read together as a camera aperture or an eye. A single basil-green line, the leaf's midrib, is the only accent, and it is never filled.</p>
+</section>
+
+<!-- ============ COLOR ============ -->
+<section id="color">
+  <p class="eyebrow">02 — Color</p>
+  <h2>Near-black ground.<br>One green, used sparingly.</h2>
+
+  <div class="swatches">
+    <div class="swatch">
+      <div class="fill" style="background:#0D0F0D;border:1px solid var(--hairline);"></div>
+      <div class="name">Background</div>
+      <div class="hex">#0D0F0D</div>
+      <div class="use">Primary ground. Near-black, faint green undertone. Never pure black.</div>
+    </div>
+    <div class="swatch">
+      <div class="fill" style="background:#11140F;border:1px solid var(--hairline);"></div>
+      <div class="name">Background alt</div>
+      <div class="hex">#11140F</div>
+      <div class="use">Raised surfaces — panels sitting a step above the ground.</div>
+    </div>
+    <div class="swatch">
+      <div class="fill" style="background:#F0EDE8;"></div>
+      <div class="name">Foreground</div>
+      <div class="hex">#F0EDE8</div>
+      <div class="use">Warm cream text and mark. Never pure white. Hierarchy via opacity.</div>
+    </div>
+    <div class="swatch">
+      <div class="fill" style="background:#6BAF8A;"></div>
+      <div class="name">Accent — basil</div>
+      <div class="hex">#6BAF8A</div>
+      <div class="use">A signal, not a fill. Lines, marks, single details only.</div>
+    </div>
+    <div class="swatch">
+      <div class="fill" style="background:#3D7A5F;"></div>
+      <div class="name">Accent — deep</div>
+      <div class="hex">#3D7A5F</div>
+      <div class="use">Shadow and depth register for the accent, at low presence.</div>
+    </div>
+  </div>
+
+  <p style="margin-top:56px;">Sections are lit, not filled: a single soft radial glow of accent-deep at 20–28% opacity, placed off-center — top-right in one section, bottom-left in the next — as if an off-screen lamp were pointed at it. One light source per section, never a blend of hues.</p>
+</section>
+
+<!-- ============ HIERARCHY ============ -->
+<section id="hierarchy">
+  <p class="eyebrow">03 — Hierarchy</p>
+  <h2>Opacity, not new colors.</h2>
+  <div class="stack">
+    <div class="line l1">Primary text sits at full cream. <span class="tag">100%</span></div>
+    <div class="line l2">Body copy recedes to roughly forty-five percent. <span class="tag">~45%</span></div>
+    <div class="line l3">Secondary and meta detail sits lower again. <span class="tag">~30%</span></div>
+    <div class="line l4">Faint micro-labels &amp; captions <span class="tag">~22–28%</span></div>
+  </div>
+</section>
+
+<!-- ============ TYPE ============ -->
+<section id="type">
+  <p class="eyebrow">04 — Typography</p>
+  <h2>Three fonts. Strict roles.</h2>
+
+  <div class="specimen">
+    <div class="role">Syne 500<span class="meta">Headlines. Tight tracking, -0.03em. Never bolded further.</span></div>
+    <div class="sample-headline">Precision, in service of judgment.</div>
+  </div>
+  <div class="specimen">
+    <div class="role">Inter 300<span class="meta">Body. 15–19px, line-height 1.65–1.75.</span></div>
+    <div class="sample-body">Nous accompagnons les sociétés de gestion sur trois terrains : la stratégie numérique, le conseil data et IA, et la production audiovisuelle assistée par IA. Une seule équipe, trois disciplines, un même souci de rigueur.</div>
+  </div>
+  <div class="specimen">
+    <div class="role">Inter 500 uppercase<span class="meta">Micro-labels. 10–13px, letter-spacing 0.08–0.12em.</span></div>
+    <div class="sample-micro">Digital Strategy — Data &amp; AI Consulting — Audiovisual Production</div>
+  </div>
+  <div class="specimen">
+    <div class="role">Cormorant Garamond 300<span class="meta">Rare serif accent. Oversized display moments only, never body.</span></div>
+    <div class="sample-serif">Ce que la donnée révèle, l'image le montre.</div>
+  </div>
+</section>
+
+<!-- ============ MOTIF ============ -->
+<section id="motif">
+  <p class="eyebrow">05 — Framing motif</p>
+  <h2>The viewfinder bracket.</h2>
+  <div class="demo">
+    <div class="frame-demo">
+      <div class="bracket tl">${'{{BR}}'}</div>
+      <div class="bracket tr">${'{{BR}}'}</div>
+      <div class="bracket bl">${'{{BR}}'}</div>
+      <div class="bracket br">${'{{BR}}'}</div>
+      <div class="cap">L-shaped corner marks, as if framing a shot</div>
+    </div>
+    <ul>
+      <li>Corner marks appear on section starters, image crops, and framed media — never as a full border. They are drawn in basil green, not cream.</li>
+      <li>On scroll into view, each corner draws itself in via SVG stroke-dashoffset, staggered ~100–150ms corner to corner; a small green anchor dot fades in at each vertex and pulses gently.</li>
+      <li>On hover, the four corners rack outward ~5px, like a lens finding focus. At random intervals, a corner flashes bright green — a focus lock.</li>
+      <li>Depth comes from opacity and hairlines. No drop shadows, no rounded corners, no gradients.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ MOTION ============ -->
+<section id="motion">
+  <p class="eyebrow">06 — Motion</p>
+  <h2>One curve. Sparse, decisive.</h2>
+  <div class="rules">
+    <div class="rule">
+      <div class="cap">Easing</div>
+      <p>Every transition uses the same curve — cubic-bezier(0.16, 1, 0.3, 1) — a fast, decisive settle. No bounce, no linear motion.</p>
+    </div>
+    <div class="rule">
+      <div class="cap">Scroll reveals</div>
+      <p>Content fades in with a 14–20px upward translate over 700–800ms, siblings staggered ~120ms apart.</p>
+    </div>
+    <div class="rule">
+      <div class="cap">Restraint</div>
+      <p>Motion is slow and intentional. If something is always moving, it's wrong. Everything collapses to its final state under reduced motion.</p>
+    </div>
+  </div>
+  <div class="curve-demo">
+    <span class="label">0.16, 1, 0.3, 1</span>
+    <div class="track"><div class="dot"></div></div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section id="components" class="section-alt" style="background:var(--bg-alt);">
+  <p class="eyebrow">07 — Components</p>
+  <h2>Outlined, underlined, never filled.</h2>
+
+  <div class="row">
+    <div>
+      <div class="col-cap">Buttons — rest &amp; hover</div>
+      <div class="demo-btn-group">
+        <div class="demo-btn">Découvrir</div>
+        <div class="demo-btn hover-state">Envoyer la demande</div>
+      </div>
+    </div>
+    <div>
+      <div class="col-cap">Form field — rest &amp; focus</div>
+      <div style="display:flex; gap:28px; flex-wrap:wrap;">
+        <div class="demo-field">
+          <label>Nom *</label>
+          <div class="input-line">Jean Dupont</div>
+        </div>
+        <div class="demo-field focus-state">
+          <label>Société *</label>
+          <div class="input-line">Votre société</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div style="flex:1; min-width:280px;">
+      <div class="col-cap">Ticker — endless scroll, uppercase micro-labels</div>
+      <div class="demo-ticker">
+        <div class="track">
+          <span class="item">AI-POWERED</span>
+          <span class="item">CUSTOM TRANSCRIPT</span>
+          <span class="item">AVATARS</span>
+          <span class="item">BRANDED CONTENT</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="col-cap">Mobile nav — the rare serif moment</div>
+      <div class="demo-serif-nav">
+        <a>Productions</a>
+        <a>Expertise</a>
+        <a>Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VOICE ============ -->
+<section id="voice">
+  <p class="eyebrow">08 — Voice</p>
+  <h2>French. Sober. Declarative.</h2>
+  <div class="principles">
+    <div class="principle">
+      <span class="num">I</span>
+      <h3>Short sentences</h3>
+      <p>State the point, then stop. No throat-clearing, no filler adjectives.</p>
+    </div>
+    <div class="principle">
+      <span class="num">II</span>
+      <h3>Confident, not loud</h3>
+      <p>Precision reads as authority here — not exclamation, not superlatives.</p>
+    </div>
+    <div class="principle">
+      <span class="num">III</span>
+      <h3>Never corporate-SaaS</h3>
+      <p>No growth-hacking language, no playful copy. This is a studio, not a platform.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ USAGE ============ -->
+<section id="usage">
+  <p class="eyebrow">09 — Usage</p>
+  <h2>Do &amp; don't.</h2>
+  <div class="grid">
+    <div class="col do">
+      <div class="cap">Do</div>
+      <ul>
+        <li>Keep the accent to a single line, mark, or detail per composition.</li>
+        <li>Let darkness separate sections — generous negative space over dividers.</li>
+        <li>Use hairline borders at low opacity, 1px only.</li>
+        <li>Set micro-labels in tracked uppercase Inter for structure and wayfinding.</li>
+      </ul>
+    </div>
+    <div class="col dont">
+      <div class="cap">Don't</div>
+      <ul>
+        <li>Fill a shape or block with the basil green.</li>
+        <li>Use drop shadows, rounded corners, or glassmorphism.</li>
+        <li>Set body copy in Cormorant Garamond, or headlines below Syne 500.</li>
+        <li>Let pure black or pure white enter the palette.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="word">OCIMUM STUDIO</div>
+  <div class="meta">Brandboard — v1</div>
+</footer>
+
+<script>
+function markSVG(size, strokeW){
+  const s = size, sw = strokeW, vb = 200;
+  return `
+  <svg width="${s}" height="${s}" viewBox="0 0 ${vb} ${vb}" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#F0EDE8" stroke-width="${sw}" stroke-linecap="square">
+      <path d="M 14 46 L 14 14 L 46 14"/>
+      <path d="M 154 14 L 186 14 L 186 46"/>
+      <path d="M 186 154 L 186 186 L 154 186"/>
+      <path d="M 46 186 L 14 186 L 14 154"/>
+    </g>
+    <g stroke="#F0EDE8" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 46 100 C 74 63 126 63 154 100"/>
+      <path d="M 46 100 C 74 137 126 137 154 100"/>
+    </g>
+    <path stroke="#6BAF8A" d="M 50 100 C 84 97 116 103 150 100" stroke-width="${sw}" stroke-linecap="round"/>
+  </svg>`;
+}
+function bracketSVG(size, strokeW){
+  return `<svg width="${size}" height="${size}" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 2 20 L 2 2 L 20 2" stroke="#6BAF8A" stroke-width="${strokeW}" stroke-linecap="square"/>
+  </svg>`;
+}
+
+document.getElementById('mark-cover').innerHTML = markSVG(120, 1.6);
+document.getElementById('mark-standalone').innerHTML = markSVG(100, 1.6);
+document.getElementById('mark-h1').innerHTML = markSVG(64, 1.5);
+document.getElementById('mark-clear').innerHTML = markSVG(72, 1.5);
+
+document.querySelectorAll('.bracket').forEach(el => {
+  const size = el.classList.contains('frame-demo') ? 32 : parseInt(getComputedStyle(el).width, 10);
+  el.innerHTML = bracketSVG(size, 1.4);
+});
+</script>
+
+</body>
+</html>
