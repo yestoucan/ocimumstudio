@@ -50,7 +50,7 @@ function IntroSection() {
       id="intro"
       className="relative overflow-hidden pt-[180px] pb-[100px] px-[8%]"
       aria-label="Conseil"
-      style={{ backgroundColor: "#0D0F0D" }}
+      style={{ backgroundColor: "#12201A" }}
     >
       <Lamp position="tr" />
       <div ref={ref} className="relative max-w-4xl mx-auto">
@@ -86,7 +86,7 @@ function StrategieSection() {
       id="strategie"
       className="relative overflow-hidden py-24 md:py-36 px-[8%]"
       aria-label="Stratégie digitale"
-      style={{ backgroundColor: "#11140F" }}
+      style={{ backgroundColor: "#16261E" }}
     >
       <div ref={ref} className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
         <div
@@ -114,7 +114,7 @@ function StrategieSection() {
             Un calendrier de prise de parole calibré à vos ressources, pas à un idéal irréaliste.
           </DetailRow>
           <DetailRow num="03" name="Pilotage & mesure" visible={visible} delay={410} last>
-            Suivi de la performance de chaque prise de parole, ajustement du plan au trimestre.
+            Suivi de la performance et ajustement.
           </DetailRow>
         </div>
       </div>
@@ -130,7 +130,7 @@ function DataIaSection() {
       id="data-ia"
       className="relative overflow-hidden py-24 md:py-36 px-[8%]"
       aria-label="IA et contenus"
-      style={{ backgroundColor: "#0D0F0D" }}
+      style={{ backgroundColor: "#12201A" }}
     >
       <Lamp position="bl" />
       <div ref={ref} className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
@@ -179,7 +179,7 @@ function BridgeSection() {
       id="bridge"
       className="py-24 md:py-32 px-[8%]"
       aria-label="Vers la production"
-      style={{ backgroundColor: "#0D0F0D" }}
+      style={{ backgroundColor: "#12201A" }}
     >
       <div
         ref={ref}

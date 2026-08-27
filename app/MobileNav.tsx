@@ -38,7 +38,7 @@ export default function MobileNav({ open, onClose }: Props) {
     <div
       className="fixed inset-0 z-[9999] flex flex-col"
       style={{
-        backgroundColor: "#0D0F0D",
+        backgroundColor: "#12201A",
         opacity: open ? 1 : 0,
         pointerEvents: open ? "auto" : "none",
         transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",

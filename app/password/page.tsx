@@ -37,12 +37,12 @@ export default function PasswordPage() {
   return (
     <div
       className="fixed inset-0 z-[99999] flex items-center justify-center px-4"
-      style={{ backgroundColor: "#0D0F0D" }}
+      style={{ backgroundColor: "#12201A" }}
     >
       <div
         className="relative w-full max-w-md overflow-hidden rounded-2xl shadow-2xl"
         style={{
-          backgroundColor: "#11140F",
+          backgroundColor: "#16261E",
           border: "1px solid rgba(107,175,138,0.18)",
         }}
       >
@@ -145,7 +145,7 @@ export default function PasswordPage() {
               style={{
                 border: "1px solid rgba(107,175,138,0.25)",
                 color: "#F0EDE8",
-                backgroundColor: "#0D0F0D",
+                backgroundColor: "#12201A",
               }}
               onFocus={(e) => {
                 e.currentTarget.style.borderColor = "#6BAF8A";
@@ -170,7 +170,7 @@ export default function PasswordPage() {
               disabled={loading}
               className="flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold transition-all hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100"
               style={{
-                color: "#0D0F0D",
+                color: "#12201A",
                 background: "linear-gradient(135deg, #6BAF8A 0%, #3D7A5F 100%)",
                 boxShadow: "0 4px 20px rgba(61,122,95,0.35)",
               }}

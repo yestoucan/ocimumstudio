@@ -414,7 +414,7 @@ export default function Home() {
           {/* Bottom fade to content */}
           <div
             className="absolute inset-x-0 bottom-0 h-56 pointer-events-none z-[3]"
-            style={{ background: "linear-gradient(to bottom, transparent, #0D0F0D)" }}
+            style={{ background: "linear-gradient(to bottom, transparent, #12201A)" }}
             aria-hidden="true"
           />
 
@@ -500,7 +500,7 @@ export default function Home() {
           className="py-32 md:py-40 px-[8%]"
           aria-label="Notre processus"
           style={{
-            background: "radial-gradient(ellipse 70% 55% at 85% 15%, rgba(61,122,95,0.28) 0%, transparent 65%), #11140F",
+            background: "radial-gradient(ellipse 70% 55% at 85% 15%, rgba(61,122,95,0.28) 0%, transparent 65%), #16261E",
           }}
         >
           <ProcessSteps />
@@ -551,7 +551,7 @@ function ExpertiseCta() {
       id="expertise-cta"
       className="py-16 md:py-20 px-[8%]"
       aria-label="Au-delà de la vidéo"
-      style={{ backgroundColor: "#0D0F0D" }}
+      style={{ backgroundColor: "#12201A" }}
     >
       <div
         ref={ref}
@@ -577,7 +577,7 @@ function ExpertiseCta() {
               className="group relative flex flex-col p-8 md:p-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light"
               style={{
                 border: "1px solid rgba(240,237,232,0.12)",
-                backgroundColor: "#11140F",
+                backgroundColor: "#16261E",
                 opacity: visible ? 1 : 0,
                 transform: visible ? "none" : "translateY(16px)",
                 transition: `opacity 700ms cubic-bezier(0.16,1,0.3,1) ${200 + i * 130}ms, transform 700ms cubic-bezier(0.16,1,0.3,1) ${200 + i * 130}ms, border-color 300ms ease, box-shadow 300ms ease`,
@@ -624,7 +624,7 @@ function TechStrip() {
   return (
     <div
       className="overflow-hidden py-3.5"
-      style={{ borderTop: "1px solid rgba(61,122,95,0.18)", borderBottom: "1px solid rgba(61,122,95,0.18)", backgroundColor: "#0A0C0A" }}
+      style={{ borderTop: "1px solid rgba(61,122,95,0.18)", borderBottom: "1px solid rgba(61,122,95,0.18)", backgroundColor: "#0D1712" }}
     >
       <div
         className="flex whitespace-nowrap"

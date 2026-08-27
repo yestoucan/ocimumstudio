@@ -7,7 +7,7 @@ export default function Footer() {
       id="footer"
       className="py-16 px-[8%]"
       style={{
-        backgroundColor: "#0A0C0A",
+        backgroundColor: "#0D1712",
         borderTop: "1px solid rgba(61,122,95,0.12)",
         boxShadow: "0 -1px 0 rgba(107,175,138,0.04), 0 -8px 32px rgba(61,122,95,0.04)",
       }}

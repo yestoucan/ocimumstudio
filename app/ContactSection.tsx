@@ -18,7 +18,7 @@ interface Props {
 
 export default function ContactSection({
   intro = "Tournage, série de contenus ou stratégie vidéo — décrivez votre besoin en quelques lignes, nous vous répondons sous 24h.",
-  background = "#11140F",
+  background = "#16261E",
 }: Props) {
   const { ref, visible } = useReveal();
   const [copied, setCopied] = useState(false);

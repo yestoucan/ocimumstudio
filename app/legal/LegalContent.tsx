@@ -58,7 +58,7 @@ export default function LegalContent() {
         <section
           className="relative overflow-hidden pt-[180px] pb-16 px-[8%]"
           aria-label="Mentions légales et confidentialité"
-          style={{ backgroundColor: "#0D0F0D" }}
+          style={{ backgroundColor: "#12201A" }}
         >
           <Lamp position="tr" />
           <div className="relative max-w-3xl mx-auto">
@@ -70,7 +70,7 @@ export default function LegalContent() {
         </section>
 
         {/* Body */}
-        <section className="px-[8%] pb-28" style={{ backgroundColor: "#0D0F0D" }}>
+        <section className="px-[8%] pb-28" style={{ backgroundColor: "#12201A" }}>
           <div
             ref={ref}
             className="max-w-3xl mx-auto divide-y"

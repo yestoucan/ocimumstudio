@@ -37,7 +37,7 @@ export default function HeroBackground() {
       const h = canvas!.height;
       const diag = Math.sqrt(w * w + h * h);
 
-      ctx!.fillStyle = "#0D0F0D";
+      ctx!.fillStyle = "#12201A";
       ctx!.fillRect(0, 0, w, h);
 
       // ── Key light — studio spotlight from top-center ──────────────
