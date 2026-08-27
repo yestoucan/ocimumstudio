@@ -25,18 +25,96 @@ const syne = Syne({
   display: "swap",
 });
 
+const SITE_URL = "https://ocimumstudio.com";
+const DESCRIPTION =
+  "Ocimum Studio, studio de production porté par l'IA et cabinet de conseil en stratégie digitale, marketing & data. Nous mettons en image et en son les meilleurs contenus d'expertise.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Ocimum Studio — Votre expertise en image, source de performance",
     template: "%s | Ocimum Studio",
   },
-  description:
-    "Ocimum Studio, une production portée par l'IA, pour mettre en image et en son les meilleurs contenus d'expertise.",
+  description: DESCRIPTION,
+  applicationName: "Ocimum Studio",
+  authors: [{ name: "Ocimum Studio", url: SITE_URL }],
+  creator: "Ocimum Studio",
+  publisher: "Ocimum Studio",
+  keywords: [
+    "Ocimum Studio",
+    "studio de production vidéo",
+    "production audiovisuelle IA",
+    "vidéo d'expertise",
+    "présentateur IA",
+    "conseil éditorial",
+    "stratégie digitale",
+    "marketing & data",
+    "Saint-Jean-de-Luz",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Ocimum Studio",
-    description: "Vos informations prennent vie.",
     type: "website",
+    locale: "fr_FR",
+    url: SITE_URL,
+    siteName: "Ocimum Studio",
+    title: "Ocimum Studio — Votre expertise en image, source de performance",
+    description: DESCRIPTION,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ocimum Studio — Votre expertise en image, source de performance",
+    description: DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "Ocimum Studio",
+      legalName: "Ocimum Studio",
+      url: SITE_URL,
+      logo: `${SITE_URL}/icon.png`,
+      image: `${SITE_URL}/opengraph-image`,
+      email: "contact@ocimumstudio.com",
+      description:
+        "Studio de production audiovisuelle porté par l'IA et cabinet de conseil en stratégie digitale, marketing & data.",
+      foundingDate: "2026-07-28",
+      founder: { "@type": "Person", name: "Jean-Alix Poylo" },
+      vatID: "FR13108015967",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "3 rue de Belzunce",
+        addressLocality: "Saint-Jean-de-Luz",
+        postalCode: "64500",
+        addressCountry: "FR",
+      },
+      areaServed: "FR",
+      sameAs: ["https://www.linkedin.com/company/ocimumstudio/"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Ocimum Studio",
+      description: DESCRIPTION,
+      inLanguage: "fr-FR",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -48,6 +126,11 @@ export default function RootLayout({
       className={`${cormorant.variable} ${inter.variable} ${syne.variable} h-full`}
     >
       <body className="min-h-full bg-bg text-cream antialiased">
+        {/* Structured data — Organization + WebSite (SEO + GEO/LLM comprehension) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
         {/* Cookiebot — consent banner, must load first to auto-block trackers before consent */}
         <Script
           id="Cookiebot"

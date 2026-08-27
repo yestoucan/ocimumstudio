@@ -21,6 +21,8 @@ export async function generateMetadata({
   };
 }
 
+const SITE_URL = "https://ocimumstudio.com";
+
 export default async function OffrePage({
   params,
 }: {
@@ -29,5 +31,53 @@ export default async function OffrePage({
   const { slug } = await params;
   const offre = getOffre(slug);
   if (!offre) notFound();
-  return <OffreDetailContent offre={offre} />;
+
+  const url = `${SITE_URL}/marketing-data/${offre.slug}`;
+  const priceNum = Number(offre.price.replace(/[^0-9]/g, "")) || undefined;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        name: offre.title,
+        serviceType: offre.title,
+        description: offre.goal,
+        url,
+        provider: { "@id": `${SITE_URL}/#organization` },
+        areaServed: "FR",
+        ...(priceNum && {
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "EUR",
+            price: priceNum,
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              priceCurrency: "EUR",
+              minPrice: priceNum,
+            },
+            url,
+          },
+        }),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Marketing & Data", item: `${SITE_URL}/marketing-data` },
+          { "@type": "ListItem", position: 3, name: offre.title, item: url },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <OffreDetailContent offre={offre} />
+    </>
+  );
 }

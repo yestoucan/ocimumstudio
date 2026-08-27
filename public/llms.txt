@@ -1,0 +1,37 @@
+# Ocimum Studio
+
+> Ocimum Studio est un studio de production audiovisuelle porté par l'intelligence artificielle et un cabinet de conseil en stratégie digitale, marketing & data. Basé à Saint-Jean-de-Luz (France), il transforme l'expertise des entreprises — rapports, notes, prises de parole — en contenus vidéo courts et à fort impact, avec un présentateur IA sous contrôle humain.
+
+Ocimum Studio est une société par actions simplifiée (SAS) fondée le 28 juillet 2026, présidée par Jean-Alix Poylo. Le studio réunit deux métiers complémentaires :
+
+- **Production audiovisuelle** : mise en image et en son de contenus d'expertise via un processus en 4 étapes (Réception du contenu brut → Écriture du script → Génération avec présentateur IA → Livraison de la vidéo montée).
+- **Conseil** : stratégie digitale, éditoriale, marketing et data, appliquée en amont de la caméra (diagnostic de présence, feuille de route éditoriale, pilotage et mesure).
+
+Le recours à l'IA se fait sous contrôle humain, avec validation avant diffusion, conformément au règlement européen sur l'IA (AI Act).
+
+## Pages principales
+
+- [Accueil](https://ocimumstudio.com/) : présentation du studio et du processus de production en 4 étapes.
+- [Conseil éditorial](https://ocimumstudio.com/conseil) : stratégie digitale et IA au service des contenus, en amont de la production.
+- [Marketing & Data](https://ocimumstudio.com/marketing-data) : huit offres de conseil en marketing et data.
+
+## Offres Marketing & Data
+
+- [Stratégie Go-To-Market](https://ocimumstudio.com/marketing-data/go-to-market-direction) : clarifier la stratégie go-to-market pour concentrer les ressources sur les canaux et audiences les plus pertinents. À partir de 1 900 €.
+- [Stratégie Multicanale](https://ocimumstudio.com/marketing-data/multichannel-strategy) : une stratégie de communication connectée entre canaux payants, organiques et propriétaires. À partir de 1 500 €.
+- [Acquisition Web](https://ocimumstudio.com/marketing-data/website-acquisition) : comprendre la contribution du site à l'acquisition et améliorer la conversion. À partir de 1 800 €.
+- [Activation CRM](https://ocimumstudio.com/marketing-data/crm-activation) : structurer la communication et la rétention de leads via email, parcours lifecycle et CRM. À partir de 1 700 €.
+- [Activation LinkedIn](https://ocimumstudio.com/marketing-data/linkedin-enablement) : construire une présence LinkedIn qui génère des leads entrants. À partir de 1 200 €.
+- [Fiabilité de la Mesure](https://ocimumstudio.com/marketing-data/measurement-confidence) : mettre en place un tracking fiable, des dashboards et des KPIs de confiance. À partir de 1 400 €.
+- [Création / Refonte de Site Web](https://ocimumstudio.com/marketing-data/website-creation-revamp) : créer ou refondre un site moderne, rapide et optimisé conversion (Next.js, Tailwind, TypeScript). À partir de 970 €.
+- [Conseil IA & Gouvernance](https://ocimumstudio.com/marketing-data/conseil-ia-gouvernance) : identifier les cas d'usage IA pertinents et les déployer avec les garde-fous d'un secteur réglementé (AI Act). À partir de 1 900 €.
+
+## Contact
+
+- Email : contact@ocimumstudio.com
+- LinkedIn : https://www.linkedin.com/company/ocimumstudio/
+- Siège : 3 rue de Belzunce, 64500 Saint-Jean-de-Luz, France
+
+## Mentions
+
+- [Mentions légales & Confidentialité](https://ocimumstudio.com/legal) : éditeur, hébergeur, politique de confidentialité (RGPD), cookies et propriété intellectuelle.
