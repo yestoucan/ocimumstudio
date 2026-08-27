@@ -21,7 +21,7 @@ export default function Footer() {
           {[
             { label: "Mentions légales", href: "/legal" },
             { label: "Contact",          href: "#contact" },
-            { label: "LinkedIn",         href: "https://linkedin.com", target: "_blank" },
+            { label: "LinkedIn",         href: "https://www.linkedin.com/company/ocimumstudio/", target: "_blank" },
           ].map((l) => (
             <a
               key={l.label}

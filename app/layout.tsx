@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter, Syne } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import ScrollRail from "./ScrollRail";
 
@@ -47,6 +48,14 @@ export default function RootLayout({
       className={`${cormorant.variable} ${inter.variable} ${syne.variable} h-full`}
     >
       <body className="min-h-full bg-bg text-cream antialiased">
+        {/* Cookiebot — consent banner, must load first to auto-block trackers before consent */}
+        <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="d473dc1a-641a-4034-9e7c-1525cd7d1a28"
+          data-blockingmode="auto"
+          strategy="beforeInteractive"
+        />
         {/* Film grain — constant subtle cinematic texture over the frame */}
         <div className="grain" aria-hidden="true" />
         <ScrollRail />

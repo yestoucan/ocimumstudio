@@ -155,8 +155,13 @@ function OffreCard({
         <span className="font-inter text-[11px] font-medium uppercase tracking-[0.12em] text-accent-light">
           Offre #{Number(offre.number)}
         </span>
-        <span className="font-syne font-medium text-[17px] tracking-[-0.02em] text-cream/90">
-          {offre.price}
+        <span className="flex flex-col items-end leading-tight">
+          <span className="font-inter text-[10px] font-normal uppercase tracking-[0.1em] text-cream/40">
+            À partir de
+          </span>
+          <span className="font-syne font-medium text-[17px] tracking-[-0.02em] text-cream/90">
+            {offre.price}
+          </span>
         </span>
       </div>
       <h3 className="font-syne font-medium text-cream tracking-[-0.02em] text-[20px] mb-3">
