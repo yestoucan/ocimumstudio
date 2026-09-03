@@ -139,6 +139,24 @@ export default function RootLayout({
           data-blockingmode="auto"
           strategy="beforeInteractive"
         />
+        {/* Google Analytics 4 — loads after hydration; Cookiebot auto-blocking
+            holds it until the visitor consents to statistics cookies */}
+        <Script
+          id="ga4-lib"
+          src="https://www.googletagmanager.com/gtag/js?id=G-TZ19MXPJ1K"
+          strategy="afterInteractive"
+          data-cookieconsent="statistics"
+        />
+        <Script
+          id="ga4-init"
+          strategy="afterInteractive"
+          data-cookieconsent="statistics"
+        >
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TZ19MXPJ1K');`}
+        </Script>
         {/* Film grain — constant subtle cinematic texture over the frame */}
         <div className="grain" aria-hidden="true" />
         <ScrollRail />
